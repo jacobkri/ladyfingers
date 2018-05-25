@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="da">
+
+ <head>
+  <title>Ladyfingers | Din Smykke Butik</title>
+  <meta name="description" content="Hos ladyfingers kan du købe smykker i alle størrelser og til alle størrelser.">
+  <link rel='stylesheet' href='ladyfingers.css' type='text/css'>
+
+
+     <!-- 
+        SHORT WP-API GUIDE
+        
+        Return all posts in the "navigation" category from wordpress:
+         http://ladyfingers.dk/wordpress/wp-json/wp/v2/posts?filter[categories]=navigation
+         
+        Return a single post/page from wordpress:
+         http://ladyfingers.dk/wordpress/wp-json/wp/v2/posts?filter[name]=about
+      -->
+      
+      
+      
+     <!-- Insta-gallery CSS (Only used for Instagram plugin) -->
+     <link rel='stylesheet' id='insta-gallery-css' href='wordpress/wp-content/plugins/insta-gallery/assets/insta-gallery-min.css?ver=1.6.1' type='text/css' media='all'>
+     <!-- Insta-gallery CSS (Only used for Instagram plugin) -->
+     
+     <!-- API: https://ladyfingers.beamtic.com/wordpress/wp-json/wp/v2/medlem -->
+  </head>
+
+ <body>
+ 
+    <!-- jQuery start -->
+    <script type='text/javascript' src='wordpress/wp-includes/js/jquery/jquery.js?ver=1.12.4'></script>
+    <!-- jQuery end -->
+  
+  
+  <header id="site_header">
+   <h1>Jewelry collective in Jægersborggade</h1>
+  </header>
+  
+  <div id="application_content">
+  </div>
+  
+  <footer id="site_footer">
+   <section>
+     <h2 class="logo">Ladyfingers</h2>
+     <p>Smykkefælllesskab i Jægersborggade.</p>
+   </section>
+   
+   <section id="address">
+    <h2>Butik</h2>
+    <p>Jægersborggade 4</p>
+    <p>2200 København N</p>
+    <p>Danmark</p>
+   </section>
+  
+   <section>
+    <h2>Åbningstider</h2>
+   </section>
+   
+   <section>
+    <h2>Kontakt</h2>
+   </section>
+   
+   <section>
+    <h2>Følg Os</h2>
+    <ol>
+     <li><a href="https://www.instagram.com/ladyfingerscph/">Instagram</a></li>
+     <li><a href="https://www.facebook.com/ladyfingerscph/">Facebook</a></li>
+     <li>Youtube</li>
+     <li>Blog</li>
+    </ol>
+   </section>
+  </footer>
+
+<template id="template_page">
+  <article data-content></article>
+</template>
+
+<!-- tornado.js - fetches the content from the wordpress back end -->  
+<script type="text/javascript" src="tornado.js"></script>
+
+<!-- Insta-gallery Wordpress plugin -->
+<script type='text/javascript'>
+let insgalajax = {"ajax_url":"/wordpress\/wp-admin\/admin-ajax.php"};
+</script>    
+<!-- 
+<script type='text/javascript' src='//ladyfingers.beamtic.com/wordpress/wp-content/plugins/insta-gallery/assets/insta-gallery-min.js?ver=1.6.1'></script>
+-->
+<script type='text/javascript' src='wordpress/wp-content/plugins/insta-gallery/assets/swiper/swiper.jquery.min.js'></script>
+<script type='text/javascript' src='wordpress/wp-content/plugins/insta-gallery/assets/magnific-popup/jquery.magnific-popup.min.js'></script>
+<!-- Insta-gallery Wordpress plugin -->
+
+  </body>
+
+ </html>
