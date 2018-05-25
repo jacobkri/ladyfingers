@@ -1,7 +1,7 @@
 let members_template = document.querySelector("#template_members");
 let page_template    = document.querySelector("#template_page");
  
-let API_URL     = 'http://ladyfingers.dk/wordpress/wp-json/wp/v2/';
+let API_URL     = 'https://ladyfingers.beamtic.com/wordpress/wp-json/wp/v2/';
 
 let req_page = GetURLParameter('page'); // The post to fetch from Wordpress
 
