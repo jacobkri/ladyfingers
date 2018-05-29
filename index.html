@@ -51,10 +51,21 @@
   
    <section>
     <h2>Åbningstider</h2>
+    <table>
+     <tr><td>Mandag </td> <td>Lukket </td></tr>
+     <tr><td>Tirsdag</td> <td>11 - 18</td></tr>
+     <tr><td>Onsdag </td> <td>11 - 18</td></tr>
+     <tr><td>Torsdag</td> <td>11 - 18</td></tr>
+     <tr><td>Fredag </td> <td>11 - 18</td></tr>
+     <tr><td>Lørdag </td> <td>11 - 18</td></tr>
+     <tr><td>Søndag </td> <td>Lukket </td></tr>
+    </table>
    </section>
    
    <section>
     <h2>Kontakt</h2>
+    <p>Telefonnummer</p>
+    <p>Email</p>
    </section>
    
    <section>
@@ -70,18 +81,22 @@
 
 <template id="template_page"> <!-- Default template -->
   <header id="site_header">
-   <h1 data-headerH1></h1>
+   <div class="headingWrap"> <!--  needed for centering -->
+     <h1 data-headerH1></h1>
+   </div>
   </header>
   <article data-content></article>
 </template>
 
 <template id="template_frontpage"> <!-- Frontpage template -->
   <header id="site_header">
-    <video width="320" height="240" autoplay>
-      <source src="" type="video/mp4" data-featuredVideo>
+    <video autoplay muted loop auto>
+      <source src="//ladyfingers.beamtic.com/wordpress/wp-content/uploads/2018/05/ladyfingers.mp4" type="video/mp4" data-featuredVideo />
       Your browser does not support the video tag.
     </video>
-   <h1 data-headerH1></h1>
+   <div class="headingWrap"> <!--  needed for centering -->
+     <h1 data-headerH1></h1>
+   </div>
   </header>
   <article data-content></article>
 </template>
