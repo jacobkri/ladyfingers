@@ -1,56 +1,78 @@
+
+// Define variables globally, for use inside our function
+  // Note. Defining the variables (using let) outside the functions will make them global (accessible inside functions..)
 let API_URL     = 'https://ladyfingers.beamtic.com/wordpress/wp-json/wp/v2/';
 let req_page = GetURLParameter('page'); // The post to fetch from Wordpress
 
 
-loadJson();
+main(); // Run the show :-D
 
 
-async function loadJson() {
-  // Function to load content from Wordpress backend via REST API
+async function main() {
+  // Function to load required data from Wordpress back-end
+  //
+  //
+  //
 	
+  // Depending on what we need to load from the API, we add relevant parts to the "API_URL" variable
   let not_found_url = API_URL + 'posts?filter[name]=404-not-found'; // Custom "Not Found" page from wordpress
+  let navigation_url = API_URL + 'posts?filter[categories]=navigation'; // Fetch all posts in the navigation category
   let template_name;
   
   if (req_page!==false) { // If the "page" parameter is NOT empty, use it to fetch content from wordpress
 	API_URL = API_URL + 'posts?filter[name]=' + req_page;
-	template_name = 'page'; // Default template
+	template_name = 'page'; // Default template - uses featured images from wordpress backend in the site header
   } else {
 	API_URL = API_URL + 'posts?filter[name]=frontpage'; // If the "page" URL parameter was empty, show frontpage
-	template_name = 'frontpage'; // Frontpage template includes a background-video in the header
+	template_name = 'frontpage'; // Frontpage template - uses hard-coded background-video in the site header
   }
   
+  wp_data = await loadJson(API_URL); // Attempt to load the requested page
+  wp_navigation_data = loadJson(navigation_url)
+  
+  // ***** CHECK FOR PAGE NOT FOUND ****
+    // Check if the length of the wp_data object is longer than 0 (to find out if the data was loaded successfully)
+    if (wp_data.length < 1) { // If data was NOT successfully returned, fetch 404 page instead (Assume Page Not Found)
+      let jsonObjekt = await fetch(not_found_url); // Tries to fetch the custom "Not Found" page from wordpress
+	  wp_data = await jsonObjekt.json();
+	      
+	  // If for some reason the "Not Found" page could not be loaded, show hard-coded error message in the browser
+	  if (wp_data.length < 1) {
+	    document.querySelector("#application_content").innerHTML = '<h2>FETAL ERROR:</h2> <p>Content was unable to load, and in addition the "404-not-found" page was also unable to load. If you are an Admin of this site, you may want to check if the 404 page exists in your Wordpress backend. This error can also be caused by issues with Network connectivity.</p>';
+	    return false; // Return without calling showContent()
+	  }
+    }
+  // ***** CHECK FOR PAGE NOT FOUND **** END
+  console.log(wp_data);
+  showContent(wp_data, template_name);
+}
+
+async function loadJson() {
   // Load json into jsonObject, then save it in wp_data for later use
   let jsonObject = await fetch(API_URL);
   wp_data = await jsonObject.json();
   
-  // Check if the length of the wp_data object is longer than 0 (to find out if the data was loaded successfully)
-  if (wp_data.length < 1) { // If data was NOT successfully returned, fetch 404 page instead (Assume Page Not Found)
-      let jsonObjekt = await fetch(not_found_url); // Tries to fetch the custom "Not Found" page from wordpress
-      wp_data = await jsonObjekt.json();
-      
-      // If for some reason the "Not Found" page could not be loaded, suggest what can be done to solve the problem
-      // This can happen in the case of network errors, or if the "404-not-found" page was deleted from wordpress (doh!)
-      if (wp_data.length < 1) {
-        document.querySelector("#application_content").innerHTML = '<h2>FETAL ERROR:</h2> <p>The "404-not-found" page was unable to load. If you are an Admin of this site, check if the page exists in your Wordpress backend.</p>';
-        return false; // Return without calling showContent()
-      }
+  if (wp_data.length < 1) {
+    return false;
+  } else {
+	return wp_data;
   }
-  showContent(wp_data, template_name);
 }
 
-function showContent(wp_data=false, template_name) {
-    // 1. Clone an HTML <template> element
-	// 2. Fill with content fetched from Wordpress via API
-	// 3. Insert cloned element in the HTML (renders the content in the browser)
-	let template = document.querySelector("#template_"+template_name); // Choose the template HTML to be used
-	
-        let clone = template.cloneNode(true).content;
-        clone.querySelector("[data-headerH1]").innerHTML = wp_data[0]['title']['rendered'];
-        clone.querySelector("[data-content]").innerHTML = wp_data[0]['content']['rendered'];
-        document.querySelector("#application_content").appendChild(clone);
-        // Featured media: wp_data[0]['wp:featuredmedia']['href']
 
-        load_instagram_plugin(); // Runs the Instagram Gallery Wordpress Plugin
+function showContent(wp_data=false, template_name) {
+  // 1. Clone an HTML <template> element
+  // 2. Fill with content fetched from Wordpress via API
+  // 3. Insert cloned element in the HTML (renders the content in the browser)
+  let template = document.querySelector("#template_"+template_name); // Choose the template HTML to be used
+	
+  let clone = template.cloneNode(true).content;
+  clone.querySelector("[data-headerH1]").innerHTML = wp_data[0]['title']['rendered'];
+  clone.querySelector("[data-content]").innerHTML = wp_data[0]['content']['rendered'];
+  document.querySelector("#application_content").appendChild(clone);
+  // Featured media: wp_data[0]['wp:featuredmedia']['href']
+
+  load_instagram_plugin(); // Runs the Instagram Gallery Wordpress Plugin
 }
 
 function GetURLParameter(sParam) {

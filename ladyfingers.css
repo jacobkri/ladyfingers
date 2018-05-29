@@ -1,27 +1,51 @@
 *{margin:0;padding:0;} /* Reset margin/padding for better cross-browser compatibility */
 h1,h2,h3,h4,h5,h6,p {padding:1em 0 0 0;} /* Using Padding instead of Margin avoids added whitespace on parent elements */
-body {min-width:300px;}
+body {font-size:18px;min-width:300px;}
+p {padding: 1em 1.5em;max-width:1080px;width:100%;margin:1em auto;}
 section p {
   padding: 1em 1.5em;
 }
 section h2 {
   padding: 1em 1em;
 }
-#site_header, #site_footer {
+#site_footer {
   background:#E2E2E2; /* Placeholder color */
   min-height:300px; /* Placeholder style */
 }
 #site_header video {
-	width:100%;
-	height:100%;
+  z-index:1;
+  width:100vw;
 }
-#site_header h1 {
+#site_header .headingWrap {
+  z-index:2;
   position:absolute;
-  top:10%;
-  left:30%;
+  top:40%;left:0;
+  width:100%;
+}
+#site_header .headingWrap h1 {
+  font-size:3em;
+  text-align:center;
+  color:#fff;
+  padding:0;
 }
 #site_header {
   position:relative;
+  max-height:100vh;
+  overflow:hidden;
+}
+#jaegersborggade_img {
+  position:relative;
+  background-size:contain;
+}
+#jaegersborggade_img p {
+  position:absolute;
+  top:40%;
+  left:0;
+  width:100%;
+  text-align:center;
+  font-size:4em;
+  color:#fff;
+  font-weight:bold;
 }
 .icon {
   margin:0 auto;
@@ -37,9 +61,6 @@ section h2 {
 #site_header h1, #icons h2 {
   text-align:center;
 }
-#site_header h1 {
-  padding:120px 0 0;
-}
 #site_footer {
   display:flex;
   flex-wrap:wrap;
@@ -47,6 +68,14 @@ section h2 {
 }
 #site_footer section {
   flex-basis:200px;
+}
+#site_footer p, #site_footer h2 {
+  margin:0;padding:1em 0 0; /* Overwrite declerations from before in the CSS */
+}
+
+/* Standard table styles */
+table { /* Used in footer on opening-hourd (Danish: Åbningstider) */
+  border-spacing: 1em;
 }
 
 /* Standard flex-boxes */
@@ -62,12 +91,28 @@ section h2 {
   #offers .flexbox { /* Used on the frontpage */
     justify-content:center; /* Center the columns in the container */
   }
-  .infoBox {
+  #offers h2 {
+    text-align:center;
+    font-size:2em;
+    text-transform:uppercase;
+  }
+  #offers p { /* Kategori: "Vi Tilbyder" */
+    margin:0;padding:0; /* Overwrite declerations from before in the CSS */
+    font-size:1.5em;
+    width:70%; /* Same as icons */
+    margin:0 auto;
+  }
+  #offers .flex-column img {
+    display:block;
+    margin:0 auto;
+    width:50%;
+  }
+  .infoBox { /* "Vi tilbyder" */
     width:100%;
     background:#E2E2E2;
-    min-height:400px;
-    margin:1em 0;
-    text-align:center;
+    
+    margin:1em 0 0;
+    text-align:left;
   }
 /* Instagram Gallery Wordpress Plugin */
 .ig-block {
@@ -90,7 +135,24 @@ section h2 {
   font-size:3em;
 }
 .contentImg p {
-  padding:10% 0 0;
+  
 }
+
+.imgWrap{width:100%;}
+
+@media screen and (min-width:1280px) {
+  #jaegersborggade_img {
+    background: url("https://ladyfingers.beamtic.com/wordpress/wp-content/uploads/2018/05/jagersborggade_1600.jpg") no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    width:100%;
+    height: 0;
+    padding-top: 66.64%; /* makes the element behave more like img */
+    margin:0 auto;
+  }
+}
+
+
 
 
