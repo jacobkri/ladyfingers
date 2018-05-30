@@ -1,55 +1,40 @@
 
-// Define variables globally, for use inside our function
+// Define certain variables globally for use inside our functions
   // Note. Defining the variables (using let) outside the functions will make them global (accessible inside functions..)
-let API_URL     = 'https://ladyfingers.beamtic.com/wordpress/wp-json/wp/v2/';
-let req_page = GetURLParameter('page'); // The post to fetch from Wordpress
+let API_URL         = 'https://ladyfingers.beamtic.com/wordpress/wp-json/wp/v2/';
+let req_page        = GetURLParameter('page'); // The post to fetch from Wordpress
+let wp_page         = false; // Contains the single-view page content I.e. frontpage and about
+let wp_site_footer  = false; // Contains the global footer
+let menu_state_open = false;
 
+let global_site_footer_url = API_URL + 'posts?filter[name]=footer';
+let not_found_url          = API_URL + 'posts?filter[name]=404-not-found'; // Custom "Not Found" page from wordpress
+let navigation_url         = API_URL + 'posts?filter[categories]=navigation'; // Fetch all posts in the navigation category
 
 main(); // Run the show :-D
 
 
 async function main() {
   // Function to load required data from Wordpress back-end
-  //
-  //
-  //
 	
-  // Depending on what we need to load from the API, we add relevant parts to the "API_URL" variable
-  let not_found_url = API_URL + 'posts?filter[name]=404-not-found'; // Custom "Not Found" page from wordpress
-  let navigation_url = API_URL + 'posts?filter[categories]=navigation'; // Fetch all posts in the navigation category
-  let template_name;
+  let default_url; // Used to fetch content on individual pages I.e. frontpage and about
   
   if (req_page!==false) { // If the "page" parameter is NOT empty, use it to fetch content from wordpress
-	API_URL = API_URL + 'posts?filter[name]=' + req_page;
-	template_name = 'page'; // Default template - uses featured images from wordpress backend in the site header
+	default_url = API_URL + 'posts?filter[name]=' + req_page;
   } else {
-	API_URL = API_URL + 'posts?filter[name]=frontpage'; // If the "page" URL parameter was empty, show frontpage
-	template_name = 'frontpage'; // Frontpage template - uses hard-coded background-video in the site header
+	default_url = API_URL + 'posts?filter[name]=frontpage'; // If the "page" URL parameter was empty, show frontpage
   }
   
-  wp_data = await loadJson(API_URL); // Attempt to load the requested page
-  wp_navigation_data = loadJson(navigation_url)
+  wp_page        = await loadJson(default_url); // Attempt to load the requested page
+  wp_navigation  = await loadJson(navigation_url); // Load pages to show in navigation
+  wp_site_footer = await loadJson(global_site_footer_url); // Load footer content from wordpress back-end
   
-  // ***** CHECK FOR PAGE NOT FOUND ****
-    // Check if the length of the wp_data object is longer than 0 (to find out if the data was loaded successfully)
-    if (wp_data.length < 1) { // If data was NOT successfully returned, fetch 404 page instead (Assume Page Not Found)
-      let jsonObjekt = await fetch(not_found_url); // Tries to fetch the custom "Not Found" page from wordpress
-	  wp_data = await jsonObjekt.json();
-	      
-	  // If for some reason the "Not Found" page could not be loaded, show hard-coded error message in the browser
-	  if (wp_data.length < 1) {
-	    document.querySelector("#application_content").innerHTML = '<h2>FETAL ERROR:</h2> <p>Content was unable to load, and in addition the "404-not-found" page was also unable to load. If you are an Admin of this site, you may want to check if the 404 page exists in your Wordpress backend. This error can also be caused by issues with Network connectivity.</p>';
-	    return false; // Return without calling showContent()
-	  }
-    }
-  // ***** CHECK FOR PAGE NOT FOUND **** END
-  console.log(wp_data);
-  showContent(wp_data, template_name);
+  showContent();
 }
 
-async function loadJson() {
+async function loadJson(FINAL_API_URL) {
   // Load json into jsonObject, then save it in wp_data for later use
-  let jsonObject = await fetch(API_URL);
+  let jsonObject = await fetch(FINAL_API_URL);
   wp_data = await jsonObject.json();
   
   if (wp_data.length < 1) {
@@ -60,20 +45,77 @@ async function loadJson() {
 }
 
 
-function showContent(wp_data=false, template_name) {
+async function showContent() {
+  let footer_content;
+  // 0. Check if content is loaded
   // 1. Clone an HTML <template> element
   // 2. Fill with content fetched from Wordpress via API
   // 3. Insert cloned element in the HTML (renders the content in the browser)
-  let template = document.querySelector("#template_"+template_name); // Choose the template HTML to be used
+    
+  // START ***** CHECK IF CONTENT LOADED **** START
+	if (wp_site_footer!==false) { // If footer content was loaded successfully, show in footer
+		footer_content = wp_site_footer[0]['content']['rendered'];
+	} else { // If footer content was not loaded, show error message in the footer instead.
+		footer_content = '<p>Footer content did not load as expected, check your network connection and try again!</p>';
+	}
 	
+    // We need to check if content loaded successfully
+    // If not, we show a 404 Not found error message
+    if (wp_page == false) { // If data was NOT successfully returned, fetch 404 page instead (Assume Page Not Found)
+      let jsonObjekt = await fetch(not_found_url); // Tries to fetch the custom "Not Found" page from wordpress
+      wp_page = await jsonObjekt.json();
+	  // If for some reason the "Not Found" page could not be loaded, show hard-coded error message in the browser
+	  if (wp_page == false) {
+	    document.querySelector("#application_content").innerHTML = '<h2>FETAL ERROR:</h2> <p>Content was unable to load, and in addition the "404-not-found" page was also unable to load. If you are an Admin of this site, you may want to check if the 404 page exists in your Wordpress backend. This error can also be caused by issues with Network connectivity.</p>';
+	    return false; // Return without doing anything
+	  }
+    }
+  // END ***** CHECK IF CONTENT LOADED **** END
+	
+  let template = document.querySelector("#template"); // Choose the template HTML to be used
   let clone = template.cloneNode(true).content;
-  clone.querySelector("[data-headerH1]").innerHTML = wp_data[0]['title']['rendered'];
-  clone.querySelector("[data-content]").innerHTML = wp_data[0]['content']['rendered'];
+  clone.querySelector("[data-siteHeader").innerHTML        = wp_page[0]['acf']['header_content'];
+  clone.querySelector("[data-headerH1]").innerHTML         = wp_page[0]['title']['rendered'];
+  clone.querySelector("[data-content]").innerHTML          = wp_page[0]['content']['rendered'];
+  clone.querySelector("[data-burgerMenu]").innerHTML       = create_burger_menu(wp_navigation);
+  clone.querySelector("[data-GlobalSiteFooter]").innerHTML = footer_content;
   document.querySelector("#application_content").appendChild(clone);
   // Featured media: wp_data[0]['wp:featuredmedia']['href']
 
   load_instagram_plugin(); // Runs the Instagram Gallery Wordpress Plugin
+  add_event_listeners(); // Add <button> Event Listeners after loading content
 }
+
+function create_burger_menu(navigation_array) {
+  if (navigation_array !== false) {
+    let menu_list = '<button id="burgerMenuButton">☰</button><ol>';
+    navigation_array.forEach(function(element) {
+	  menu_list += '<li><a href=?page="'+element['slug']+'">'+element['title']['rendered']+'</a></li>';
+      // console.log(element['slug']); // This was left here by a careless person for testing purposes
+    });
+    return menu_list + '</ol>';
+  } else {
+	return '<p>No Content Loaded</p>';
+  }
+}
+
+function toggle_burger_menu() {
+	let burger_menu = document.getElementById("burgerMenu");
+	
+	if (menu_state_open == true) {
+	  burger_menu.style.height = "4em";
+	  menu_state_open = false;
+	} else {
+	  burger_menu.style.height = "auto";
+	  menu_state_open = true;
+	}
+	
+}
+function add_event_listeners() {
+  let burger_menu = document.getElementById("burgerMenuButton");
+  burger_menu.addEventListener('click', toggle_burger_menu, false);
+}
+
 
 function GetURLParameter(sParam) {
   // Function to search for a sParam, and return its value (if found)

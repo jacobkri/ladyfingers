@@ -18,8 +18,6 @@
          http://ladyfingers.dk/wordpress/wp-json/wp/v2/posts?filter[name]=about
       -->
       
-      
-      
      <!-- Insta-gallery CSS (Only used for Instagram plugin) -->
      <!-- <link rel='stylesheet' id='insta-gallery-css' href='wordpress/wp-content/plugins/insta-gallery/assets/insta-gallery-min.css?ver=1.6.1' type='text/css' media='all'>  -->
      <!-- Insta-gallery CSS (Only used for Instagram plugin) -->
@@ -30,75 +28,24 @@
  <body>
  
     <!-- jQuery start -->
-    <script type='text/javascript' src='wordpress/wp-includes/js/jquery/jquery.js?ver=1.12.4'></script>
+    <script type='text/javascript' src='//ladyfingers.beamtic.com/wordpress/wp-includes/js/jquery/jquery.js?ver=1.12.4'></script>
     <!-- jQuery end -->
   
   <div id="application_content">
   </div>
-  
-  <footer id="site_footer">
-   <section>
-     <h2 class="logo">Ladyfingers</h2>
-     <p>Smykkefælllesskab i Jægersborggade.</p>
-   </section>
-   
-   <section id="address">
-    <h2>Butik</h2>
-    <p>Jægersborggade 4</p>
-    <p>2200 København N</p>
-    <p>Danmark</p>
-   </section>
-  
-   <section>
-    <h2>Åbningstider</h2>
-    <table>
-     <tr><td>Mandag </td> <td>Lukket </td></tr>
-     <tr><td>Tirsdag</td> <td>11 - 18</td></tr>
-     <tr><td>Onsdag </td> <td>11 - 18</td></tr>
-     <tr><td>Torsdag</td> <td>11 - 18</td></tr>
-     <tr><td>Fredag </td> <td>11 - 18</td></tr>
-     <tr><td>Lørdag </td> <td>11 - 18</td></tr>
-     <tr><td>Søndag </td> <td>Lukket </td></tr>
-    </table>
-   </section>
-   
-   <section>
-    <h2>Kontakt</h2>
-    <p>Telefonnummer</p>
-    <p>Email</p>
-   </section>
-   
-   <section>
-    <h2>Følg Os</h2>
-    <ol>
-     <li><a href="https://www.instagram.com/ladyfingerscph/">Instagram</a></li>
-     <li><a href="https://www.facebook.com/ladyfingerscph/">Facebook</a></li>
-     <li>Youtube</li>
-     <li>Blog</li>
-    </ol>
-   </section>
-  </footer>
 
-<template id="template_page"> <!-- Default template -->
+<template id="template"> <!-- Default template -->
   <header id="site_header">
-   <div class="headingWrap"> <!--  needed for centering -->
+   <div id="custom_header_content" data-siteHeader> <!-- Corresponds with the "header_content" "Custom Field" in Wordpress -->
+   </div>
+   <div id="burgerMenu" data-isOpen="false" data-burgerMenu>
+   </div>
+   <div class="headingWrap">
      <h1 data-headerH1></h1>
    </div>
   </header>
   <article data-content></article>
-</template>
-
-<template id="template_frontpage"> <!-- Frontpage template -->
-  <header id="site_header">
-    <video autoplay muted loop auto>
-      <source src="//ladyfingers.beamtic.com/wordpress/wp-content/uploads/2018/05/ladyfingers.mp4" type="video/mp4" data-featuredVideo />
-      Your browser does not support the video tag.
-    </video>
-   <div class="headingWrap"> <!--  needed for centering -->
-     <h1 data-headerH1></h1>
-   </div>
-  </header>
-  <article data-content></article>
+  <footer id="site_footer" data-GlobalSiteFooter></footer>
 </template>
 
 <!-- tornado.js - fetches the content from the wordpress back end -->  
@@ -107,12 +54,12 @@
 <!-- Insta-gallery Wordpress plugin -->
 <script type='text/javascript'>
 let insgalajax = {"ajax_url":"/wordpress\/wp-admin\/admin-ajax.php"};
-</script>    
+</script>
 <!-- 
 <script type='text/javascript' src='//ladyfingers.beamtic.com/wordpress/wp-content/plugins/insta-gallery/assets/insta-gallery-min.js?ver=1.6.1'></script>
 -->
-<script type='text/javascript' src='wordpress/wp-content/plugins/insta-gallery/assets/swiper/swiper.jquery.min.js'></script>
-<script type='text/javascript' src='wordpress/wp-content/plugins/insta-gallery/assets/magnific-popup/jquery.magnific-popup.min.js'></script>
+<script type='text/javascript' src='//ladyfingers.beamtic.com/wordpress/wp-content/plugins/insta-gallery/assets/swiper/swiper.jquery.min.js'></script>
+<script type='text/javascript' src='//ladyfingers.beamtic.com/wordpress/wp-content/plugins/insta-gallery/assets/magnific-popup/jquery.magnific-popup.min.js'></script>
 <!-- Insta-gallery Wordpress plugin -->
 
   </body>
