@@ -12,10 +12,8 @@ body {
     margin: 0 auto;
 }
 
-#site_footer {
-    background:#E2E2E2; /* Placeholder color */
-    min-height:500px; /* Placeholder style */
-}
+
+/*************************** header ***************************/
 
 #site_header video {
     z-index:1;
@@ -39,14 +37,41 @@ body {
 }
 
 #site_header {
-  position:relative;
   background: #E2E2E2;
-  min-height:5em;
   max-height:100vh;
   overflow:hidden;
 }
 
+
+/** media queris **/
+@media screen and (max-width: 400px) {
+
+    #site_header video {
+    z-index:1;
+    width: auto;
+    height: 100vh;
+        position: relative;
+        right: 20em;
+}
+
+#site_header .headingWrap {
+    display: grid;
+    grid-template-columns: 1fr;
+    padding-left: 1em;
+}
+
+#site_header .headingWrap h1 {
+    grid-column: 1;
+    justify-content: center;
+    position: relative;
+}
+}
+
+/*************************** header slut ***************************/
+
+
 /*************************** burger Menu ***************************/
+
 #burgerMenu {
   position:absolute;
   top:1em;
@@ -86,17 +111,160 @@ body {
 .bigImg h2 {text-align:center;}
 
 
+/*************************** Footer ***************************/
+
+
 #site_footer {
-  display:flex;
-  flex-wrap:wrap;
-  justify-content:center;
+    background:#E2E2E2; /* Placeholder color */
+    display: grid;
+    grid-template-columns: 1fr 1.26fr 1fr 1.26fr 1fr 1.26fr 1fr 1.26fr 3fr;
+    grid-template-rows: 0.6fr 1fr 1fr 0.6fr;
 }
-#site_footer section {
-  flex-basis:200px;
+
+footer img {
+    height: 50px;
 }
-#site_footer p, #site_footer h2 {
-  margin:0;padding:0 0 0; /* Overwrite declerations from before in the CSS */
+
+footer p {
+    font-size: 0.8em;
+    font-family: 'Open Sans', sans-serif;
+    padding: 0;
+    line-height: 2em;
 }
+
+tr {
+    font-size: 0.8em;
+    font-family: 'Open Sans', sans-serif;
+    padding: 0;
+    line-height: 2em;
+}
+
+footer #logo {
+    grid-column: 2/3;
+    grid-row: 2/3;
+}
+
+footer #address {
+    grid-column: 4/5;
+    grid-row: 2/3;
+}
+
+footer #tider {
+    grid-column: 6/7;
+    grid-row: 2/4;
+}
+
+footer #kontakt {
+    grid-column: 8/9;
+    grid-row: 2/3;
+}
+
+footer #folg {
+    grid-column: 9/10;
+    grid-row: 2/3;
+    justify-self: center;
+}
+
+footer #folg .folg_wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr;
+}
+
+footer #folg i {
+    color: #000000;
+    padding: 0px 20px;
+    margin: 0;
+    font-size: 1.2em;
+}
+
+footer #folg i:hover {
+    color: #799997;
+}
+
+footer #copyright {
+    grid-column: 2/4;
+    grid-row: 3/4;
+    align-self: end
+}
+
+/** media queries **/
+@media screen and (max-width: 400px) {
+
+#site_footer {
+    background:#E2E2E2; /* Placeholder color */
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+    padding: 0 1em;
+}
+
+footer img {
+    height: 50px;
+}
+
+footer #logo {
+    grid-column: 1/2;
+    grid-row: 1;
+    margin: 6em 0 4em;
+    justify-content: center;
+}
+
+footer #address {
+    grid-column: 1;
+    grid-row: 2;
+    padding: 0 0 4em 0;
+
+}
+
+footer #tider {
+    grid-column: 2;
+    grid-row: 2;
+    padding: 0 0 4em 0;
+    justify-self: center;
+}
+
+footer #kontakt {
+    grid-column: 1;
+    grid-row: 2;
+    padding: 0 0 4em 0;
+    position: relative;
+    top: 8em;
+}
+
+footer #folg {
+    grid-column: 1/3;
+    grid-row: 5;
+    justify-self: center;
+    padding: 0 0 4em 0;
+}
+
+footer #folg .folg_wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr;
+}
+
+footer #folg i {
+    color: #000000;
+    padding: 0px 20px;
+    margin: 0;
+    font-size: 1.2em;
+}
+
+footer #folg i:hover {
+    color: #799997;
+}
+
+footer #copyright {
+    grid-column: 1/3;
+    grid-row: 6;
+    padding: 0 0 4em 0;
+    justify-self: center;
+}
+}
+
+/*************************** Footer slut ***************************/
 
 
 /*************************** Fonte ***************************/
@@ -116,13 +284,16 @@ h2 {
 }
 
 h3 {
-    font-size: 1em;
+    font-size: 1.2em;
     font-family: 'Raleway', sans-serif;
     font-weight: 700;
 }
 
 h4 {
-
+    font-size: 0.8em;
+    font-family: 'Open Sans', sans-serif;
+    padding: 0;
+    line-height: 2em;
 }
 
 p {
@@ -137,6 +308,31 @@ a {
     font-weight: 400;
     font-size: 1em;
 }
+
+@media screen and (max-width: 400px) {
+
+    h1 {
+        font-size: 2em;
+    }
+
+    h2 {
+        font-size: 2em;
+        margin-bottom: 1em;
+    }
+}
+
+@media screen and (max-width: 768px) {
+
+    h1 {
+        font-size: 3em;
+    }
+
+    h2 {
+        font-size: 2em;
+        margin-bottom: 1em;
+    }
+}
+
 
 /*************************** Fonte slut ***************************/
 
@@ -184,6 +380,43 @@ a {
     transition: 0.5s;
 }
 
+@media screen and (max-width: 1024px) {
+  #ladyfingers_forside .ladyfingers_text {
+    grid-column: 9/12;
+    position: relative;
+    top: 0;
+}
+}
+
+@media screen and (max-width: 768px) {
+  #ladyfingers_forside .ladyfingers_text {
+    grid-column: 9/13;
+    position: relative;
+    top: 0;
+}
+}
+
+@media screen and (max-width: 400px) {
+
+  #ladyfingers_forside .wrapper {
+    display: grid;
+    grid-template-columns: 1fr;
+}
+
+    #ladyfingers_forside img {
+        width: 100%;
+        position: relative;
+        right: 1em;
+    }
+
+    #ladyfingers_forside .ladyfingers_text {
+        grid-column: 1;
+        padding: 0 1em;
+        margin-top: 4em;
+    }
+
+}
+
 /*************************** Ladyfingers slut ***************************/
 
 
@@ -201,7 +434,27 @@ a {
 #instagram_main .text_item {
     grid-column: 3/7;
     position: relative;
-    right: 3.5em;
+    right: 2em;
+}
+
+@media screen and (max-width: 400px) {
+
+    #instagram_main {
+    padding: 0 0 4em 0;
+}
+
+    #instagram_main .text {
+    display: grid;
+    grid-template-columns: 1fr;
+
+}
+    #instagram_main .text_item {
+    grid-column: 1;
+    position: static;
+    padding: 1em;
+}
+
+
 }
 
 /*************************** instagram slut ***************************/
@@ -253,7 +506,71 @@ a {
     grid-column: 8/13;
 }
 
+/** media queries **/
+@media screen and (max-width: 400px) {
 
+#unik_personlig img {
+    width: 100%;
+    height: auto;
+}
+
+#unik_personlig .wrapper {
+    display: grid;
+    grid-template-columns: 1fr;
+    position: static;
+}
+
+#unik_personlig .unik_image {
+    grid-column: 1;
+    order: 1;
+    position: relative;
+    right: 1em;
+}
+
+#unik_personlig .unik_text {
+    grid-column: 1;
+    position: static;
+    order: 2;
+    padding: 0 1em;
+    margin-top: 4em;
+}
+
+#unik_personlig .unik_text h2 {
+    white-space: normal;
+}
+
+#unik_personlig .personlig_text {
+    grid-column: 1;
+    position: static;
+    order: 4;
+    margin-top: 4em;
+    position: relative;
+    top: -14em;
+    padding: 0 1em;
+}
+
+#unik_personlig .personlig_text h2 {
+    white-space: normal;
+}
+
+#unik_personlig .personlig_image {
+    grid-column: 1;
+    order: 3;
+    position: relative;
+    top: -14em;
+    left: 1em;
+}
+
+    #unik_personlig .wrapper:nth-of-type(1) {
+        padding-top: 6em;
+        padding-bottom: 20em;
+    }
+
+#unik_personlig .wrapper:nth-of-type(2) {
+        background: #ffffff;
+        height: 700px;
+    }
+}
 
 
 /*************************** unikke smykker - pers service slut ***************************/
@@ -290,6 +607,41 @@ a {
 #special_smykker h2 {
     position: relative;
     right: 300px;
+}
+
+/** media queries **/
+@media screen and (max-width: 400px) {
+
+#special_smykker {
+    padding: 6em 1em;
+}
+
+#special_smykker img {
+    width: 100%;
+    height: auto;
+}
+
+#special_smykker .wrapper {
+    display: grid;
+    grid-template-columns: 1fr;
+    position: static;
+}
+
+#special_smykker .special_image {
+    grid-column: 1;
+}
+
+#special_smykker .special_text {
+    grid-column: 1;
+    position: static;
+    margin-top: 4em;
+}
+
+#special_smykker h2 {
+    position: static;
+    white-space: normal;
+}
+
 }
 
 /*************************** specialfremstillede smykker  slut ***************************/
@@ -341,48 +693,47 @@ a {
     transition: 0.5s;
 }
 
-/*************************** gaden slut ***************************/
-
-
-/* Standard table styles */
-table { /* Used in footer on opening-hourd (Danish: Åbningstider) */
-  border-spacing: 1em;
+/** media queries **/
+@media screen and (max-width: 400px) {
+    #gaden {
+    padding: 6em 0px;
 }
 
-/* Standard flex-boxes */
-.flexbox {
-  display:flex;
-  flex-wrap:wrap;
-}
-.flex-column {
-  flex-basis:300px;
+#gaden .wrapper {
+    display: grid;
+    grid-template-columns: 1fr;
 }
 
-  /*
-     ***** Specific styles *****
-  */
-  
-
-/* Instagram Gallery Wordpress Plugin */
-.ig-block {
-  margin:1em 0;
+#gaden .gaden_text {
+    grid-column: 1;
+    position: static;
+    padding: 0 1em;
+    order: 2;
+    margin-top: 4em;
 }
 
-
-.contentImg {
-  width:100%;
-  min-width:290px;
-  height:400px;
-  background:#E2E2E2;
-  text-align:center;
-  font-size:3em;
-}
-.contentImg p {
-  
+#gaden .imgWrap {
+    grid-column: 1;
+    order: 1;
+    position: relative;
+    left: 1em;
 }
 
-.imgWrap {
+#gaden h2 {
+    color: #ffffff;
+    position: relative;
+    top: 4.5em;
+    left: 1em;
+    z-index: 1;
+}
+
+#jaegersborggade_img {
+    background: url("https://ladyfingers.beamtic.com/wordpress/wp-content/uploads/2018/05/jagersborggade_1600.jpg") no-repeat;
+   background-position: center;
+    background-attachment: fixed;
     width:100%;
+    padding-top: 66.64%; /* makes the element behave more like img */
+  }
 }
 
 @media screen and (min-width:1280px) {
@@ -397,6 +748,8 @@ table { /* Used in footer on opening-hourd (Danish: Åbningstider) */
     margin:0 auto;
   }
 }
+
+/*************************** gaden slut ***************************/
 
 
 
