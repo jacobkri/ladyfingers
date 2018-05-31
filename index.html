@@ -5,25 +5,8 @@
   <title>Ladyfingers | Din Smykke Butik</title>
   <meta name="description" content="Hos ladyfingers kan du købe smykker i alle størrelser og til alle størrelser.">
   <link rel='stylesheet' href='ladyfingers.css' type='text/css'>
-  <link rel='stylesheet' href='modified-insta-gallery.css' type='text/css'>
-
-
-     <!-- 
-        SHORT WP-API GUIDE
-        
-        Return all posts in the "navigation" category from wordpress:
-         http://ladyfingers.dk/wordpress/wp-json/wp/v2/posts?filter[categories]=navigation
-         
-        Return a single post/page from wordpress:
-         http://ladyfingers.dk/wordpress/wp-json/wp/v2/posts?filter[name]=about
-      -->
-      
-     <!-- Insta-gallery CSS (Only used for Instagram plugin) -->
-     <!-- <link rel='stylesheet' id='insta-gallery-css' href='wordpress/wp-content/plugins/insta-gallery/assets/insta-gallery-min.css?ver=1.6.1' type='text/css' media='all'>  -->
-     <!-- Insta-gallery CSS (Only used for Instagram plugin) -->
-     
-     <!-- API: https://ladyfingers.beamtic.com/wordpress/wp-json/wp/v2/medlem -->
-     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|Raleway:400,700" rel="stylesheet">
+  <link rel='stylesheet' href='modified-insta-gallery.css' type='text/css'> <!-- Our own Modified CSS for the "Instagram Gallery" Wordpress Plugin -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|Raleway:400,700" rel="stylesheet">
   </head>
 
  <body>
@@ -56,9 +39,11 @@
 <script type='text/javascript'>
 let insgalajax = {"ajax_url":"https://ladyfingers.beamtic.com/wordpress\/wp-admin\/admin-ajax.php"};
 </script>
-<!-- 
-<script type='text/javascript' src='//ladyfingers.beamtic.com/wordpress/wp-content/plugins/insta-gallery/assets/insta-gallery-min.js?ver=1.6.1'></script>
--->
+  <!-- 
+   The code in this file was moved to tornado.js so that we can load the plugin after loading content from Wordpress,
+   and that is why this is not uncommented.
+   <script type='text/javascript' src='/wordpress/wp-content/plugins/insta-gallery/assets/insta-gallery-min.js?ver=1.6.1'></script>
+  -->
 <script type='text/javascript' src='//ladyfingers.beamtic.com/wordpress/wp-content/plugins/insta-gallery/assets/swiper/swiper.jquery.min.js'></script>
 <script type='text/javascript' src='//ladyfingers.beamtic.com/wordpress/wp-content/plugins/insta-gallery/assets/magnific-popup/jquery.magnific-popup.min.js'></script>
 <!-- Insta-gallery Wordpress plugin -->
