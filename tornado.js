@@ -11,7 +11,22 @@ let global_site_footer_url = API_URL + 'posts?filter[name]=footer';
 let not_found_url          = API_URL + 'posts?filter[name]=404-not-found'; // Custom "Not Found" page from wordpress
 let navigation_url         = API_URL + 'posts?filter[category_name]=navigation'; // Fetch all posts in the navigation category
 
+
+
 main(); // Run the show :-D
+
+
+function scrollFunction() {
+    if (document.body.scrollTop > (window.screen.height-50) || document.documentElement.scrollTop > window.screen.height-50) {
+    	document.getElementById('burgerBar1').style.background = "#000";
+    	document.getElementById('burgerBar2').style.background = "#000";
+    	document.getElementById('burgerBar3').style.background = "#000";
+    } else {
+    	document.getElementById('burgerBar1').style.background = "#fff";
+    	document.getElementById('burgerBar2').style.background = "#fff";
+    	document.getElementById('burgerBar3').style.background = "#fff";
+    }
+}
 
 
 async function main() {
@@ -30,6 +45,7 @@ async function main() {
   wp_site_footer = await loadJson(global_site_footer_url); // Load footer content from wordpress back-end
   
   showContent();
+  window.onscroll = function() {scrollFunction()};
 }
 
 async function loadJson(FINAL_API_URL) {
@@ -88,7 +104,7 @@ async function showContent() {
 
 function create_burger_menu(navigation_array) {
   if (navigation_array !== false) {
-    let menu_list = '<button id="burgerMenuButton">☰</button><ol>';
+    let menu_list = '<button id="burgerMenuButton"><span id="burgerBar1"></span><span id="burgerBar2"></span><span id="burgerBar3"></span></button><ol id="menuList">';
     navigation_array.forEach(function(element) {
 	  menu_list += '<li><a href=?page="'+element['slug']+'">'+element['title']['rendered']+'</a></li>';
       // console.log(element['slug']); // This was left here by a careless person for testing purposes
@@ -101,12 +117,18 @@ function create_burger_menu(navigation_array) {
 
 function toggle_burger_menu() {
 	let burger_menu = document.getElementById("burgerMenu");
+	let menu_list   = document.getElementById("menuList");
 	
 	if (menu_state_open == true) {
-	  burger_menu.style.height = "4em";
+	  burger_menu.className = "menuClosed";
+	  // menu_list.className = "listClosed";
+	  setTimeout(function(){
+	    burger_menu.className = "";
+	  }, 1000);
 	  menu_state_open = false;
 	} else {
-	  burger_menu.style.height = "auto";
+	  burger_menu.className = "menuOpen";
+	 //  menu_list.className = "listOpen";
 	  menu_state_open = true;
 	}
 	
