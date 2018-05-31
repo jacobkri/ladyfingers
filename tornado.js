@@ -9,7 +9,7 @@ let menu_state_open = false;
 
 let global_site_footer_url = API_URL + 'posts?filter[name]=footer';
 let not_found_url          = API_URL + 'posts?filter[name]=404-not-found'; // Custom "Not Found" page from wordpress
-let navigation_url         = API_URL + 'posts?filter[categories]=navigation'; // Fetch all posts in the navigation category
+let navigation_url         = API_URL + 'posts?filter[category_name]=navigation'; // Fetch all posts in the navigation category
 
 main(); // Run the show :-D
 
