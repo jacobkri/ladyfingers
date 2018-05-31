@@ -4,6 +4,7 @@
  <head>
   <title>Ladyfingers | Din Smykke Butik</title>
   <meta name="description" content="Hos ladyfingers kan du købe smykker i alle størrelser og til alle størrelser.">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel='stylesheet' href='ladyfingers.css' type='text/css'>
   <link rel='stylesheet' href='modified-insta-gallery.css' type='text/css'> <!-- Our own Modified CSS for the "Instagram Gallery" Wordpress Plugin -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|Raleway:400,700" rel="stylesheet">
@@ -20,7 +21,8 @@
 
 <template id="template"> <!-- Default template -->
   <header id="site_header">
-   <div id="custom_header_content" data-siteHeader> <!-- Corresponds with the "header_content" "Custom Field" in Wordpress -->
+   <div id="custom_header_content" class="menuClosed" data-siteHeader><!-- Corresponds with the "header_content" "Custom Field" in Wordpress -->
+   <!-- The menuClosed class is replaced with menuOpen when the burger is clicked/touched -->
    </div>
    <nav id="burgerMenu" data-burgerMenu>
    </nav>
