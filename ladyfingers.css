@@ -1,36 +1,43 @@
-*{margin:0;padding:0;background:none;} /* Reset margin/padding for better cross-browser compatibility */
-h1,h2,h3,h4,h5,h6,p {padding:0 0 0 0;} /* Using Padding instead of Margin avoids added whitespace on parent elements */
-body {font-size:18px;min-width:300px;}
-p {padding: 1em 1.5em;max-width:1080px;width:100%;margin:1em auto;}
-article section section{
-  padding: 5em 0;
+* {
+    margin:0;
+    padding:0;
+    background:none;
+} /* Reset margin/padding for better cross-browser compatibility */
+
+
+body {
+    font-size:18px;
+    min-width:300px;
+    max-width: 1440px;
+    margin: 0 auto;
 }
-section p {
-  padding: 1em 1.5em;
-}
-section h2 {
-  padding: 0 1em;
-}
+
 #site_footer {
-  background:#E2E2E2; /* Placeholder color */
-  min-height:500px; /* Placeholder style */
+    background:#E2E2E2; /* Placeholder color */
+    min-height:500px; /* Placeholder style */
 }
+
 #site_header video {
-  z-index:1;
-  width:100vw;
+    z-index:1;
+    width:100vw;
 }
+
 #site_header .headingWrap {
-  z-index:2;
-  position:absolute;
-  top:40%;left:auto;
-  width:100%;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    z-index:2;
+    position:absolute;
+    top:40%;
 }
+
 #site_header .headingWrap h1 {
-  font-size:3em;
-  text-align:center;
-  color:#fff;
-  padding:0;
+    grid-column: 2/9;
+    text-align: left;
+    color:#fff;
+    padding:0;
+
 }
+
 #site_header {
   position:relative;
   background: #E2E2E2;
@@ -38,6 +45,7 @@ section h2 {
   max-height:100vh;
   overflow:hidden;
 }
+
 /*************************** burger Menu ***************************/
 #burgerMenu {
   position:absolute;
@@ -77,9 +85,7 @@ section h2 {
 }
 .bigImg h2 {text-align:center;}
 
-#site_header h1, #icons h2 {
-  text-align:center;
-}
+
 #site_footer {
   display:flex;
   flex-wrap:wrap;
@@ -102,9 +108,11 @@ h1 {
 }
 
 h2 {
-    font-size: 2.5em;
+    font-size: 3em;
     font-family: 'Raleway', sans-serif;
     font-weight: 400;
+    line-height: 1em;
+    margin-bottom: 0.5em;
 }
 
 h3 {
@@ -120,10 +128,14 @@ h4 {
 p {
     font-size: 1em;
     font-family: 'Open Sans', sans-serif;
+    padding: 0;
+    line-height: 1.5em;
 }
 
 a {
-
+    font-family: 'Raleway', sans-serif;
+    font-weight: 400;
+    font-size: 1em;
 }
 
 /*************************** Fonte slut ***************************/
@@ -152,13 +164,24 @@ a {
 
 #ladyfingers_forside .ladyfingers_text {
     grid-column: 9/12;
+    position: relative;
+    top: 4em;
 }
 
 #ladyfingers_forside a {
     text-decoration: none;
     color: #000000;
     border: #000000 solid 1px;
-    padding: 5px 10px;
+    padding: 10px 40px;
+    line-height: 6em;
+}
+
+#ladyfingers_forside a:hover {
+    color: #ffffff;
+    border: #000000 solid 1px;
+    background: #000000;
+    padding: 10px 40px;
+    transition: 0.5s;
 }
 
 /*************************** Ladyfingers slut ***************************/
@@ -177,6 +200,8 @@ a {
 
 #instagram_main .text_item {
     grid-column: 3/7;
+    position: relative;
+    right: 3.5em;
 }
 
 /*************************** instagram slut ***************************/
@@ -186,7 +211,6 @@ a {
 
 #unik_personlig {
     background: #fcfbf4;
-    padding: 5em 0;
 }
 
 #unik_personlig img {
@@ -197,6 +221,8 @@ a {
 #unik_personlig .wrapper {
     display: grid;
     grid-template-columns: repeat(12, 1fr);
+    position: relative;
+    top: 6em;
 }
 
 #unik_personlig .unik_image {
@@ -205,10 +231,22 @@ a {
 
 #unik_personlig .unik_text {
     grid-column: 8/11;
+    position: relative;
+    top: 8em;
+}
+
+#unik_personlig .unik_text h2 {
+    white-space: nowrap;
 }
 
 #unik_personlig .personlig_text {
     grid-column: 3/6;
+    position: relative;
+    top: 10em;
+}
+
+#unik_personlig .personlig_text h2 {
+    white-space: nowrap;
 }
 
 #unik_personlig .personlig_image {
@@ -225,7 +263,6 @@ a {
 
 #special_smykker {
     background: #d2af91;
-    padding: 5em 0;
 }
 
 #special_smykker img {
@@ -236,6 +273,8 @@ a {
 #special_smykker .wrapper {
     display: grid;
     grid-template-columns: repeat(12, 1fr);
+    position: relative;
+    top: 6em;
 }
 
 #special_smykker .special_image {
@@ -244,6 +283,8 @@ a {
 
 #special_smykker .special_text {
     grid-column: 8/11;
+    position: relative;
+    top: 10em;
 }
 
 #special_smykker h2 {
@@ -258,7 +299,7 @@ a {
 
 #gaden {
     background: #ffffff;
-    padding: 5em 0px;
+    padding: 11em 0px;
 }
 
 #gaden .wrapper {
@@ -268,6 +309,8 @@ a {
 
 #gaden .gaden_text {
     grid-column: 2/5;
+    position: relative;
+    top: 10em;
 }
 
 #gaden .imgWrap {
@@ -277,9 +320,27 @@ a {
 #gaden h2 {
     color: #ffffff;
     position: relative;
-    top: 300px;
+    top: 3.7em;
+    left: 2em;
     z-index: 1;
 }
+
+#gaden a {
+    text-decoration: none;
+    color: #000000;
+    border: #000000 solid 1px;
+    padding: 10px 40px;
+    line-height: 6em;
+}
+
+#gaden a:hover {
+    color: #ffffff;
+    border: #000000 solid 1px;
+    background: #000000;
+    padding: 10px 40px;
+    transition: 0.5s;
+}
+
 /*************************** gaden slut ***************************/
 
 
