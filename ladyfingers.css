@@ -1048,8 +1048,21 @@ footer #copyright {
     margin: 0;
 }
 
-#presseomtale p {
+#presseomtale q {
     font-size: 1.5em;
+}
+q {
+  quotes: "“" "”" "‘" "’";
+}
+q:before {
+    content: open-quote;
+    font-style:italic;
+    margin:0.5em;
+}
+q:after {
+    content: close-quote;
+    font-style:italic;
+    margin:0.5em;
 }
 
 #presseomtale a {
