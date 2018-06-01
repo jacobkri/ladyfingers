@@ -17,7 +17,7 @@ main(); // Run the show :-D
 
 
 function scrollFunction() {
-    if (document.body.scrollTop > (window.screen.height-50) || document.documentElement.scrollTop > window.screen.height-50) {
+    if (document.body.scrollTop > (window.screen.height-100) || document.documentElement.scrollTop > window.screen.height-100) {
     	document.getElementById('burgerBar1').style.background = "#000";
     	document.getElementById('burgerBar2').style.background = "#000";
     	document.getElementById('burgerBar3').style.background = "#000";
@@ -104,12 +104,16 @@ async function showContent() {
 
 function create_burger_menu(navigation_array) {
   if (navigation_array !== false) {
-    let menu_list = '<button id="burgerMenuButton"><span id="burgerBar1"></span><span id="burgerBar2"></span><span id="burgerBar3"></span></button><ol id="menuList">';
+    menu_list_top = '<button id="burgerMenuButton"><span id="burgerBar1"></span><span id="burgerBar2"></span><span id="burgerBar3"></span></button><ol id="menuList">';
+    let menu_list = '';
     navigation_array.forEach(function(element) {
-	  menu_list += '<li><a href=?page="'+element['slug']+'">'+element['title']['rendered']+'</a></li>';
-      // console.log(element['slug']); // This was left here by a careless person for testing purposes
+      if (element['slug']=='frontpage') {
+        menu_list = '<li><a href="/" id="frontpage_link">Forsiden</a></li>' + menu_list;
+      } else {
+	    menu_list += '<li><a href=?page='+element['slug']+'>'+element['title']['rendered']+'</a></li>';
+      }
     });
-    return menu_list + '</ol>';
+    return menu_list_top + menu_list + '</ol>';
   } else {
 	return '<p>No Content Loaded</p>';
   }
@@ -120,14 +124,14 @@ function toggle_burger_menu() {
 	let menu_list   = document.getElementById("menuList");
 	
 	if (menu_state_open == true) {
-	  burger_menu.className = "menuClosed";
+	  burger_menu.className           = "menuClosed";
 	  // menu_list.className = "listClosed";
 	  setTimeout(function(){
 	    burger_menu.className = "";
 	  }, 1000);
 	  menu_state_open = false;
 	} else {
-	  burger_menu.className = "menuOpen";
+	  burger_menu.className           = "menuOpen";
 	 //  menu_list.className = "listOpen";
 	  menu_state_open = true;
 	}

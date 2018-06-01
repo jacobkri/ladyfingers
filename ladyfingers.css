@@ -12,6 +12,43 @@ body {
 
 
 /*************************** header ***************************/
+#site_header_logo_white {position:absolute;top:0.5em;left:0;text-align:center;width:100%;}
+#site_header_logo_white img {height:90px;}
+#site_header_follow_white {
+  position:absolute;top:2em;left:0;
+  z-index:3;
+}
+
+#site_header_follow_white a {
+  width:1em;height:1em;
+  font-size:1.2em;
+  color:#fff;
+  padding:0 1em;
+}
+
+#site_header_logo_black {position:absolute;top:0.5em;left:0;text-align:center;width:100%;}
+#site_header_logo_black img {height:90px;}
+#site_header_follow_black {
+  position:absolute;top:2em;left:0;
+  z-index:3;
+}
+
+#site_header_follow_black a {
+  width:1em;height:1em;
+  font-size:1.2em;
+  color:#000;
+  padding:0 1em;
+}
+
+#custom_header_content a:link {color: #fff;}
+#custom_header_content a:visited {color: #fff;}
+#custom_header_content a:hover {color: #799997;;}
+#custom_header_content a:active {color: #799997;}
+
+#site_header video, #site_header #header_img  {
+  z-index:1;
+  width:100vw;
+}
 
 #site_header video {
     z-index:1;
@@ -401,6 +438,7 @@ a {
   border-bottom-left-radius:70%;
 }
 #burgerMenu button {
+	float:right;
 	border:0;
 	display:block;
 	margin:0 auto 4em;
@@ -411,7 +449,7 @@ a {
     background: none;
 }
 #burgerMenu button:hover {color:#000000;cursor:pointer;}
-#burgerMenu ol {list-style-type:none;width:100%;}
+#burgerMenu ol {list-style-type:none;width:100%;clear:both;}
 #burgerMenu a {
   display:block;
   text-align:center;
