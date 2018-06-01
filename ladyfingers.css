@@ -40,14 +40,10 @@ body {
   padding:0 1em;
 }
 
-#custom_header_content #site_header_follow_white a:link {color: #fff;}
-#custom_header_content #site_header_follow_white a:visited {color: #fff;}
-#custom_header_content #site_header_follow_white a:hover {color: #799997;;}
-#custom_header_content #site_header_follow_white a:active {color: #799997;}
-#custom_header_content #site_header_follow_black a:link {color: #000;}
-#custom_header_content #site_header_follow_black a:visited {color: #000;}
-#custom_header_content #site_header_follow_black a:hover {color: #799997;;}
-#custom_header_content #site_header_follow_black a:active {color: #799997;}
+#custom_header_content a:link {color: #fff;}
+#custom_header_content a:visited {color: #fff;}
+#custom_header_content a:hover {color: #799997;;}
+#custom_header_content a:active {color: #799997;}
 
 #site_header video, #site_header #header_img  {
   z-index:1;
@@ -59,34 +55,26 @@ body {
     width:100vw;
 }
 
-#site_header .headingWrap {
-    display: grid;
-    grid-template-columns: repeat(12, 1fr);
-    z-index:2;
-    position:absolute;
-    top:40%;
-}
-
-#site_header .headingWrap h1 {
-    grid-column: 2/9;
-    text-align: left;
-    color:#fff;
-    padding:0;
-    grid-column: 1;
-    justify-content: center;
+#site_header {
+    background: #E2E2E2;
+  max-height:100vh;
+  overflow:hidden;
     position: relative;
 }
 
-#site_header {
-  background: #E2E2E2;
-  max-height:100vh;
-  overflow:hidden;
+#site_header .headingWrap {
+    z-index:2;
+    position: absolute;
+    top: 50%;
+    left: 5%;
+    transform: translate(-0%, -50%);
+    max-width: 600px;
 }
 
-#site_header .headingWrap {
-    display: grid;
-    grid-template-columns: 1fr;
-    padding-left: 1em;
+#site_header .headingWrap h1 {
+
+    color:#fff;
+    padding:0;
 }
 
 
@@ -553,6 +541,11 @@ footer #copyright {
 
 @media screen and (max-width: 1024px) {
 
+    #site_header video {
+      z-index:1;
+      width: auto;
+      height: 100vh;
+    }
 
     #ladyfingers_forside .ladyfingers_text {
       top: 0;
@@ -1059,17 +1052,14 @@ q {
   quotes: "“" "”" "‘" "’";
 }
 q:before {
-	font-size:1.8em;
-	font-weight:bold;
     content: open-quote;
     font-style:italic;
-    margin:0 0 0 -0.5em;
+    margin:0.5em;
 }
 q:after {
-	font-weight:bold;
     content: close-quote;
     font-style:italic;
-    margin:0 0.5em 0 0;
+    margin:0.5em;
 }
 
 #presseomtale a {

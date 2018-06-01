@@ -45,7 +45,15 @@ async function main() {
   wp_site_footer = await loadJson(global_site_footer_url); // Load footer content from wordpress back-end
   
   showContent();
-  window.onscroll = function() {scrollFunction()};
+  
+  // Crazy lazy ass fix for the #burgerMenu
+  if (req_page=='designerne') {
+  	document.getElementById('burgerBar1').style.background = "#000";
+	document.getElementById('burgerBar2').style.background = "#000";
+	document.getElementById('burgerBar3').style.background = "#000";
+  } else {
+	window.onscroll = function() {scrollFunction()};  
+  }
 }
 
 async function loadJson(FINAL_API_URL) {
