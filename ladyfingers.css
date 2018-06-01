@@ -719,8 +719,6 @@ footer #copyright {
     align-self: end;
     justify-self: center;
 }
-
-    
 }
 
 @media screen and (max-width: 400px) {
@@ -940,4 +938,264 @@ footer #copyright {
     padding-top: 66.64%; /* makes the element behave more like img */
     margin:0 auto;
   }
+}
+
+
+
+/************************ about siden **********************/
+
+/************************ about siden **********************/
+
+#smykkefaellesskab {
+    padding: 6em 1em 6em 1em;
+}
+
+#smykkefaellesskab a {
+    text-decoration: none;
+    color: #000000;
+    border: #000000 solid 1px;
+    padding: 10px 40px;
+    line-height: 6em;
+}
+
+#vaerdier img {
+    width: 100%;
+    position: relative;
+    right: 1em;
+}
+
+#vaerdier .ord {
+    position: relative;
+    top: -3em;
+    padding-left: 1rem;
+    color: #d2af91;
+}
+
+#vaerdier h2 {
+    font-size: 3em;
+    line-height: 0.5;
+}
+
+#kreativitet {
+    padding: 0 1em 6em 1em;
+}
+
+#kreativitet img {
+    width: 100%;
+}
+
+#kreativitet .text {
+    margin-top: 4em;
+}
+
+#smykker img {
+    width: 100%;
+    margin-bottom: -5px;
+}
+
+#smykker .text {
+    padding: 6em 1em 6em 1em;
+    background: #e1e2e3;
+}
+
+#presseomtale {
+    padding: 6em 1em 6em 1em;
+}
+
+#presseomtale .grid-column {
+    padding-top: 4em;
+}
+
+#presseomtale h2 {
+    margin: 0;
+}
+
+#presseomtale p {
+    font-size: 1.5em;
+}
+
+#presseomtale a {
+    font-size: 1rem;
+    text-decoration: none;
+    color: #000000;
+}
+
+@media only screen and (min-width: 401px) and (max-width: 1024px) {
+
+#vaerdier {
+        display: grid;
+        grid-template-columns: repeat(12, 1fr);
+    }
+
+    #vaerdier img {
+        grid-column: 1/9;
+    }
+
+    #vaerdier .ord {
+        grid-column: 8/12;
+        position: relative;
+        top: -15em;
+        padding: 0;
+    }
+
+    #kreativitet {
+        display: grid;
+        grid-template-columns: repeat(12, 1fr);
+    }
+
+    #kreativitet .text {
+        grid-column: 2/5;
+        order: 1;
+        margin: 0;
+    }
+
+    #kreativitet img {
+        grid-column: 7/12;
+        order: 2;
+        width: 100%;
+    }
+
+    #smykker {
+        display: grid;
+        grid-template-columns: repeat(12, 1fr);
+    }
+
+    #smykker img {
+        width: 100%;
+    }
+
+    #smykker .image {
+        grid-column: 1/7;
+        order: 1;
+
+    }
+
+    #smykker .text {
+        grid-column: 7/13;
+        order: 2;
+
+    }
+
+    #smykker p, #smykker h2 {
+        padding: 0 6vw;
+    }
+
+    #presseomtale h2 {
+         text-align: center;
+    }
+
+    #presseomtale .grid {
+        display: grid;
+        grid-template-columns: 1fr 2fr 0.5fr 2fr 0.5fr 2fr 1fr;
+    }
+
+    #presseomtale .grid-column:nth-of-type(1) {
+        grid-column: 2/3;
+    }
+
+    #presseomtale .grid-column:nth-of-type(2) {
+        grid-column: 4/5;
+    }
+
+    #presseomtale .grid-column:nth-of-type(3) {
+        grid-column: 6/7;
+    }
+}
+
+@media only screen and (min-width: 1025px) {
+    #vaerdier {
+        display: grid;
+        grid-template-columns: repeat(12, 1fr);
+        padding-bottom: 6em;
+    }
+
+    #vaerdier img {
+        grid-column: 1/9;
+        grid-row: 1;
+    }
+
+    #vaerdier .ord {
+        grid-column: 8/12;
+        position: relative;
+        top: 7em;
+        padding: 0;
+        font-size: 1.6em;
+        grid-row: 1;
+    }
+
+
+
+    #kreativitet {
+        display: grid;
+        grid-template-columns: repeat(12, 1fr);
+        padding-bottom: 6em;
+    }
+
+    #kreativitet .text {
+        grid-column: 2/5;
+        order: 1;
+
+    }
+
+    #kreativitet h2 {
+        white-space: pre;
+    }
+
+    #kreativitet img {
+        grid-column: 7/12;
+        order: 2;
+        width: 100%;
+    }
+
+    #smykker {
+        display: grid;
+        grid-template-columns: repeat(12, 1fr);
+    }
+
+    #smykker img {
+        width: 100%;
+    }
+
+    #smykker .image {
+        grid-column: 1/7;
+        order: 1;
+
+    }
+
+    #smykker .text {
+        grid-column: 7/13;
+        order: 2;
+        padding: 0;
+    }
+
+    #smykker .text_grid{
+        grid-column: 8/12;
+        position: relative;
+        top: 30%;
+    }
+
+    #smykker p, #smykker h2 {
+        padding: 0 6vw;
+    }
+
+    #presseomtale h2 {
+         text-align: center;
+    }
+
+    #presseomtale .grid {
+        display: grid;
+        grid-template-columns: 1fr 2fr 0.5fr 2fr 0.5fr 2fr 1fr;
+    }
+
+    #presseomtale .grid-column:nth-of-type(1) {
+        grid-column: 2/3;
+    }
+
+    #presseomtale .grid-column:nth-of-type(2) {
+        grid-column: 4/5;
+    }
+
+    #presseomtale .grid-column:nth-of-type(3) {
+        grid-column: 6/7;
+    }
 }
