@@ -460,6 +460,161 @@ a {
  *********************************
  */
 
+@media screen and (max-width: 1024px) {
+    #ladyfingers_forside .ladyfingers_text {
+      top: 0;
+    }
+}
+
+@media screen and (max-width: 768px) {
+
+    #ladyfingers_forside .wrapper {
+     grid-template-columns: 1fr;
+    }
+
+    #ladyfingers_forside img {
+      width: 100%;
+      position: relative;
+      right: 1em;
+    }
+    
+    #ladyfingers_forside .ladyfingers_text {
+      grid-column: 1;
+      padding: 0 1em;
+      margin-top: 4em;
+    }
+
+    #gaden {
+      padding: 12em 0 6em 0;
+    }
+
+    #gaden .wrapper {
+      display: grid;
+      grid-template-columns: 1fr;
+    }
+
+    #gaden .gaden_text {
+      grid-column: 1;
+      position: static;
+      padding: 0 1em;
+      order: 2;
+      margin-top: 4em;
+    }
+
+    #gaden .imgWrap {
+      grid-column: 1;
+      order: 1;
+      position: relative;
+      left: 1em;
+    }
+
+    #gaden h2 {
+      color: #ffffff;
+      position: relative;
+      top: 8em;
+      left: 1em;
+      z-index: 1;
+    }
+
+    #jaegersborggade_img {
+      background: url("https://ladyfingers.beamtic.com/wordpress/wp-content/uploads/2018/05/jagersborggade_1600.jpg") no-repeat;
+      background-position: center;
+      background-attachment: fixed;
+      width:100%;
+      padding-top: 66.64%; /* makes the element behave more like img */
+    }
+	#special_smykker {
+      position: relative;
+      top: 10em;
+      height: 37em;
+    }
+
+    #special_smykker .special_text {
+      position: relative;
+      top: 8em;
+    }
+
+    #special_smykker h2 {
+      position: relative;
+      right: 4em;
+    }
+
+    #unik_personlig .unik_text {
+      top: 2em;
+    }
+
+    #unik_personlig .personlig_text {
+      top: 3em;
+        grid-column: 2/7;
+    }
+
+    #unik_personlig .wrapper:nth-of-type(1) {
+      padding-bottom: 6em;
+    }
+
+    #unik_personlig .wrapper:nth-of-type(2) {
+      background: #ffffff;
+      height: 400px;
+      padding-top: 6em;
+    }
+    
+    #site_header video {
+      z-index:1;
+      width: auto;
+      height: 100vh;
+    }
+    h1 {
+      font-size: 3em;
+    }
+    h2 {
+      font-size: 2em;
+      margin-bottom: 1em;
+    }
+    #instagram_main {
+        padding: 0 1em 4em 1em;
+    }
+
+    #instagram_main .text {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      padding: 0 1em;
+    }
+
+    #instagram_main .text_item {
+        grid-column: 1/2;
+      padding: 0 1em;
+    }
+    
+    #site_footer {
+    grid-template-columns: 1fr 1fr 1fr 1fr !important;
+  }
+    
+  footer #logo {
+
+  }
+    
+  footer #address {
+
+  }
+    
+  footer #tider {
+
+  }
+    
+  footer #kontakt {
+
+  }
+    
+  footer #folg {
+
+  }
+    
+  footer #copyright {
+
+  }
+
+    
+}
 
 @media screen and (max-width: 400px) {
   #site_header video {
@@ -667,164 +822,6 @@ a {
     font-size: 2em;
     margin-bottom: 1em;
   }
-}
-
-
-@media screen and (max-width: 768px) {
-
-    #ladyfingers_forside .wrapper {
-     grid-template-columns: 1fr;
-    }
-
-    #ladyfingers_forside img {
-      width: 100%;
-      position: relative;
-      right: 1em;
-    }
-    
-    #ladyfingers_forside .ladyfingers_text {
-      grid-column: 1;
-      padding: 0 1em;
-      margin-top: 4em;
-    }
-
-    #gaden {
-      padding: 12em 0 6em 0;
-    }
-
-    #gaden .wrapper {
-      display: grid;
-      grid-template-columns: 1fr;
-    }
-
-    #gaden .gaden_text {
-      grid-column: 1;
-      position: static;
-      padding: 0 1em;
-      order: 2;
-      margin-top: 4em;
-    }
-
-    #gaden .imgWrap {
-      grid-column: 1;
-      order: 1;
-      position: relative;
-      left: 1em;
-    }
-
-    #gaden h2 {
-      color: #ffffff;
-      position: relative;
-      top: 8em;
-      left: 1em;
-      z-index: 1;
-    }
-
-    #jaegersborggade_img {
-      background: url("https://ladyfingers.beamtic.com/wordpress/wp-content/uploads/2018/05/jagersborggade_1600.jpg") no-repeat;
-      background-position: center;
-      background-attachment: fixed;
-      width:100%;
-      padding-top: 66.64%; /* makes the element behave more like img */
-    }
-	#special_smykker {
-      position: relative;
-      top: 10em;
-      height: 37em;
-    }
-
-    #special_smykker .special_text {
-      position: relative;
-      top: 8em;
-    }
-
-    #special_smykker h2 {
-      position: relative;
-      right: 4em;
-    }
-
-    #unik_personlig .unik_text {
-      top: 2em;
-    }
-
-    #unik_personlig .personlig_text {
-      top: 3em;
-        grid-column: 2/7;
-    }
-
-    #unik_personlig .wrapper:nth-of-type(1) {
-      padding-bottom: 6em;
-    }
-
-    #unik_personlig .wrapper:nth-of-type(2) {
-      background: #ffffff;
-      height: 400px;
-      padding-top: 6em;
-    }
-    
-    #site_header video {
-      z-index:1;
-      width: auto;
-      height: 100vh;
-    }
-    h1 {
-      font-size: 3em;
-    }
-    h2 {
-      font-size: 2em;
-      margin-bottom: 1em;
-    }
-    #instagram_main {
-        padding: 0 1em 4em 1em;
-    }
-
-    #instagram_main .text {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      padding: 0 1em;
-    }
-
-    #instagram_main .text_item {
-        grid-column: 1/2;
-      padding: 0 1em;
-    }
-    
-    #site_footer {
-    grid-template-columns: 1fr 1fr 1fr 1fr !important;
-  }
-    
-  footer #logo {
-
-  }
-    
-  footer #address {
-
-  }
-    
-  footer #tider {
-
-  }
-    
-  footer #kontakt {
-
-  }
-    
-  footer #folg {
-
-  }
-    
-  footer #copyright {
-
-  }
-
-    
-}
-
-
-@media screen and (max-width: 1024px) {
-    #ladyfingers_forside .ladyfingers_text {
-      top: 0;
-    }
 }
 
 
