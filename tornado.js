@@ -47,11 +47,7 @@ async function main() {
   showContent();
   
   // Crazy lazy ass fix for the #burgerMenu
-  if (req_page=='designerne') {
-  	document.getElementById('burgerBar1').style.background = "#000";
-	document.getElementById('burgerBar2').style.background = "#000";
-	document.getElementById('burgerBar3').style.background = "#000";
-  } else {
+  if (req_page!=='designerne') {
 	window.onscroll = function() {scrollFunction()};  
   }
 }
