@@ -70,7 +70,7 @@ body {
 #site_footer {
     background: #fcfbf4;
     display: grid;
-    grid-template-columns: 1fr 1.26fr 1fr 1.26fr 1fr 1.26fr 1fr 1.26fr 3fr;
+    grid-template-columns: 1fr 1.26fr 0.5fr 1.26fr 0.5fr 1.26fr 0.5fr 1.26fr 3fr;
     grid-template-rows: 0.6fr 1fr 1fr 0.6fr;
 }
 
@@ -460,9 +460,93 @@ a {
  *********************************
  */
 
+@media screen and (max-width: 1396px) {
+    #site_footer {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 0.4fr 0.6fr 1fr 0.3fr 0.3fr;
+}
+
+footer #logo {
+    grid-column: 2/4;
+    grid-row: 2/3;
+}
+
+footer #address {
+    grid-column: 2/4;
+    grid-row: 3/4;
+}
+
+footer #tider {
+    grid-column: 4/8;
+    grid-row: 3/4;
+}
+
+footer #kontakt {
+    grid-column: 6/7;
+    grid-row: 3/4;
+
+}
+
+footer #folg {
+    grid-column: 7/10;
+    grid-row: 3/4;
+    justify-self: center;
+}
+
+footer #folg .folg_wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr;
+}
+
+
+footer #copyright {
+    grid-column: 2/4;
+    grid-row: 4/5;
+    align-self: end;
+}
+
+}
+
 @media screen and (max-width: 1024px) {
+
+
     #ladyfingers_forside .ladyfingers_text {
       top: 0;
+    }
+
+    #unik_personlig .unik_text {
+    top: 6em;
+}
+
+    #unik_personlig .personlig_text {
+    grid-column: 2/5;
+    top: 4em;
+}
+
+    #special_smykker .special_text {
+    top: 4em;
+}
+
+    #gaden .gaden_text {
+    top: 4em;
+}
+
+    #gaden h2 {
+      color: #ffffff;
+      position: relative;
+      top: 3em;
+      left: 1em;
+      z-index: 1;
+    }
+
+    #jaegersborggade_img {
+      background: url("https://ladyfingers.beamtic.com/wordpress/wp-content/uploads/2018/05/jagersborggade_1600.jpg") no-repeat;
+      background-position: center;
+      background-attachment: fixed;
+      width:100%;
+      padding-top: 66.64%; /* makes the element behave more like img */
     }
 }
 
@@ -523,6 +607,7 @@ a {
       width:100%;
       padding-top: 66.64%; /* makes the element behave more like img */
     }
+
 	#special_smykker {
       position: relative;
       top: 10em;
@@ -563,6 +648,7 @@ a {
       width: auto;
       height: 100vh;
     }
+
     h1 {
       font-size: 3em;
     }
@@ -586,32 +672,53 @@ a {
     }
     
     #site_footer {
-    grid-template-columns: 1fr 1fr 1fr 1fr !important;
-  }
-    
-  footer #logo {
+    display: grid;
+    grid-template-columns: 1fr 1.26fr 0.5fr 1.26fr 0.5fr 1.26fr 0.5fr 1.26fr 1fr;
+    grid-template-rows: 0.4fr 0.6fr 1fr 0.3fr 0.3fr;
+}
 
-  }
-    
-  footer #address {
+footer #logo {
+    grid-column: 3/5;
+    grid-row: 2/3;
+}
 
-  }
-    
-  footer #tider {
+footer #address {
+    grid-column: 3/5;
+    grid-row: 3/4;
+}
 
-  }
-    
-  footer #kontakt {
+footer #tider {
+    grid-column: 6/9;
+    grid-row: 3/4;
+}
 
-  }
-    
-  footer #folg {
+footer #kontakt {
+    grid-column: 3/5;
+    grid-row: 3/4;
+    position: relative;
+    top: 8em;
+}
 
-  }
-    
-  footer #copyright {
+footer #folg {
+    grid-column: 4/7;
+    grid-row: 4/5;
+    align-self: end;
+    justify-self: center;
+}
 
-  }
+footer #folg .folg_wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr;
+}
+
+
+footer #copyright {
+    grid-column: 4/7;
+    grid-row: 5/6;
+    align-self: end;
+    justify-self: center;
+}
 
     
 }
@@ -689,7 +796,7 @@ a {
 
   #unik_personlig .wrapper:nth-of-type(2) {
     background: #ffffff;
-    height: 700px;
+    height: 300px;
   }
 
   #special_smykker {
@@ -764,55 +871,52 @@ a {
   }
 
   #site_footer {
-    grid-template-rows: auto;
-    padding: 0 1em;
-  }
+    display: grid;
+    grid-template-columns: 1fr 1.26fr 0.5fr 1.26fr 0.5fr 1.26fr 0.5fr 1.26fr 1fr;
+    grid-template-rows: 0.4fr 0.6fr 1fr 0.3fr 0.3fr;
+    padding-left: 1em;
+}
 
-  footer img {
-    height: 50px;
-  }
+footer #logo {
+    grid-column: 1/5;
+    grid-row: 2/3;
+}
 
-  footer #logo {
-    grid-column: 1/2;
-    grid-row: 1;
-    margin: 6em 0 4em;
-    justify-content: center;
-  }
+    td {
+    padding-right: 1em;
+}
 
-  footer #address {
-    grid-column: 1;
-    grid-row: 2;
-    padding: 0 0 4em 0;
-  }
+footer #address {
+    grid-column: 1/5;
+    grid-row: 3/4;
+}
 
-  footer #tider {
-    grid-column: 2/5;
-    grid-row: 2;
-    padding: 0 0 4em 0;
-    justify-self: center;
-  }
+footer #tider {
+    grid-column: 5/10;
+    grid-row: 3/4;
+}
 
-  footer #kontakt {
-    grid-column: 1;
-    grid-row: 2;
-    padding: 0 0 4em 0;
+footer #kontakt {
+    grid-column: 1/5;
+    grid-row: 3/4;
     position: relative;
     top: 8em;
-  }
+}
 
-  footer #folg {
-    grid-column: 1/5;
-    grid-row: 3;
+footer #folg {
+    grid-column: 2/9;
+    grid-row: 4/5;
+    align-self: end;
     justify-self: center;
-    padding: 0 0 4em 0;
-  }
+}
 
-  footer #copyright {
-    grid-column: 1/5;
-    grid-row: 4;
-    padding: 0 0 4em 0;
+
+footer #copyright {
+    grid-column: 2/9;
+    grid-row: 5/6;
+    align-self: end;
     justify-self: center;
-  }
+}
 
   h1 {
     font-size: 2em !important;
