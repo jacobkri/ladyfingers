@@ -41,6 +41,7 @@
       margin:1em;
       min-width:270px;
       box-sizing:border-box;
+      grid-gap:1em;
    }
 
    .instagallery-items .ig-item { /* Modified */
@@ -63,7 +64,6 @@
 	position: relative;
 	text-align: center;
 	overflow: hidden;
-	   margin:1em 0.5em;
    }
 .instagallery-items .ig-item.ighover a:after {
     content: "";

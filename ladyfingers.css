@@ -40,10 +40,14 @@ body {
   padding:0 1em;
 }
 
-#custom_header_content a:link {color: #fff;}
-#custom_header_content a:visited {color: #fff;}
-#custom_header_content a:hover {color: #799997;;}
-#custom_header_content a:active {color: #799997;}
+#custom_header_content #site_header_follow_white a:link {color: #fff;}
+#custom_header_content #site_header_follow_white a:visited {color: #fff;}
+#custom_header_content #site_header_follow_white a:hover {color: #799997;;}
+#custom_header_content #site_header_follow_white a:active {color: #799997;}
+#custom_header_content #site_header_follow_black a:link {color: #000;}
+#custom_header_content #site_header_follow_black a:visited {color: #000;}
+#custom_header_content #site_header_follow_black a:hover {color: #799997;;}
+#custom_header_content #site_header_follow_black a:active {color: #799997;}
 
 #site_header video, #site_header #header_img  {
   z-index:1;
@@ -1055,14 +1059,17 @@ q {
   quotes: "“" "”" "‘" "’";
 }
 q:before {
+	font-size:1.8em;
+	font-weight:bold;
     content: open-quote;
     font-style:italic;
-    margin:0.5em;
+    margin:0 0 0 -0.5em;
 }
 q:after {
+	font-weight:bold;
     content: close-quote;
     font-style:italic;
-    margin:0.5em;
+    margin:0 0.5em 0 0;
 }
 
 #presseomtale a {
