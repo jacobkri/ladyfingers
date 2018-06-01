@@ -38,7 +38,7 @@
       display: grid;
       grid-template-columns:2fr 1fr;
       grid-template-rows: fit-content(540px);
-      margin:1em;
+
       min-width:270px;
       box-sizing:border-box;
       grid-gap:1em;
@@ -294,14 +294,17 @@
 	.ig-item{
 		min-width: 33.333%;
 		padding: 10px;
+
 	}	
 
 }
 @media screen and (max-width: 767px) {
 
+
+
 	.ig-item{
 		min-width: 33.333%;
-		padding: 5px;
+		padding: 0px;
 	}
 
 }
@@ -311,6 +314,10 @@
 		min-width: 50%;
 	}	
 
-    .instagallery-items {display:block;margin:0;}
+    .instagallery-items {
+        display: grid;
+        grid-template-columns: 1fr;
+
+    }
 }
  
