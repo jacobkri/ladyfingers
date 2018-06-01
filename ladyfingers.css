@@ -1199,3 +1199,145 @@ footer #copyright {
         grid-column: 6/7;
     }
 }
+
+
+/************************ designere siden **********************/
+
+/************************ designere siden **********************/
+
+.designer_overskrift {
+    padding: 0 1rem;
+    margin: 0;
+}
+
+#designerne {
+    padding: 0 1em 4em 1em;
+
+}
+
+.baggrund {
+    height: 38em;
+    background: #d2af91;
+    position: relative;
+    top: 60em;
+    z-index: -1;
+}
+
+.container {
+  position: relative;
+  width: 100%;
+
+}
+
+.image {
+  display: block;
+  width: 100%;
+    height: auto;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  transition: .5s ease;
+  background-color: rgba(243, 243, 244, 0.8);
+}
+
+.logo {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.container:hover .overlay {
+  opacity: 1;
+}
+
+#designerne .item {
+    padding-top: 6em;
+}
+
+#designerne .navn {
+    margin-top: 2em;
+   font-size: 1.2em;
+
+}
+
+@media only screen and (min-width: 401px) and (max-width: 768px){
+    #designerne {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-column-gap: 5vw;
+        padding: 0 20vw 10em 20vw;
+    }
+
+
+    .designer_overskrift {
+        padding: 0 20vw;
+    }
+
+    .baggrund {
+    height: 25em;
+    top: 40em;
+}
+
+    .logo {
+
+    width: 20vw;
+}
+}
+
+@media only screen and (min-width: 769px) and (max-width: 1024px){
+    #designerne {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-column-gap: 5vw;
+        padding: 0 20vw 10em 20vw;
+    }
+
+
+    .designer_overskrift {
+        padding: 0 20vw;
+    }
+
+    .baggrund {
+    height: 30em;
+    top: 50em;
+}
+
+    .logo {
+
+    width: 20vw;
+}
+}
+
+@media only screen and (min-width: 1025px) {
+    #designerne {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-column-gap: 5vw;
+        padding: 0 20vw 10em 20vw;
+    }
+
+
+    .designer_overskrift {
+        padding: 0 20vw;
+    }
+
+    .baggrund {
+    height: 40em;
+    top: 65em;
+}
+
+    .logo {
+
+    width: 20vw;
+}
+}
