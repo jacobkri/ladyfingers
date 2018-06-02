@@ -6,6 +6,7 @@ let req_page        = GetURLParameter('page'); // The post to fetch from Wordpre
 let wp_page         = false; // Contains the single-view page content I.e. frontpage and about
 let wp_site_footer  = false; // Contains the global footer
 let menu_state_open = false;
+// https://ladyfingers.beamtic.com/wordpress/wp-json/wp/v2/posts?filter[category_name]=navigation
 
 let global_site_footer_url = API_URL + 'posts?filter[name]=footer';
 let not_found_url          = API_URL + 'posts?filter[name]=404-not-found'; // Custom "Not Found" page from wordpress
@@ -16,18 +17,11 @@ let navigation_url         = API_URL + 'posts?filter[category_name]=navigation';
 main(); // Run the show :-D
 
 
-function scrollFunction() {
-    if (document.body.scrollTop > (window.screen.height-100) || document.documentElement.scrollTop > window.screen.height-100) {
-    	document.getElementById('burgerBar1').style.background = "#000";
-    	document.getElementById('burgerBar2').style.background = "#000";
-    	document.getElementById('burgerBar3').style.background = "#000";
-    } else {
-    	document.getElementById('burgerBar1').style.background = "#fff";
-    	document.getElementById('burgerBar2').style.background = "#fff";
-    	document.getElementById('burgerBar3').style.background = "#fff";
-    }
+// The below code calls "scrollFunction()" to change the color of the burgerMenu when needed
+// Because of design-requirements, this is only needed on some pages. I.e. Some pages has a white #site_header and others has a video or an image.
+if (!document.getElementById('site_header_follow_white')) { // If the header background is dark, switch to white burgerBar's in the #burgerMenu
+	window.onscroll = function() {scrollFunction()};
 }
-
 
 async function main() {
   // Function to load required data from Wordpress back-end
@@ -45,15 +39,6 @@ async function main() {
   wp_site_footer = await loadJson(global_site_footer_url); // Load footer content from wordpress back-end
   
   showContent();
-  
-  // Crazy lazy ass fix for the #burgerMenu
-  if (req_page=='designerne') {
-  	document.getElementById('burgerBar1').style.background = "#000";
-	document.getElementById('burgerBar2').style.background = "#000";
-	document.getElementById('burgerBar3').style.background = "#000";
-  } else {
-	window.onscroll = function() {scrollFunction()};  
-  }
 }
 
 async function loadJson(FINAL_API_URL) {
@@ -99,6 +84,7 @@ async function showContent() {
   let template = document.querySelector("#template"); // Choose the template HTML to be used
   let clone = template.cloneNode(true).content;
   clone.querySelector("[data-siteHeader").innerHTML        = wp_page[0]['acf']['header_content'];
+  document.querySelector('title').innerHTML                = wp_page[0]['title']['rendered']; // Most likely, this will not work in search engines
   clone.querySelector("[data-headerH1]").innerHTML         = wp_page[0]['title']['rendered'];
   clone.querySelector("[data-content]").innerHTML          = wp_page[0]['content']['rendered'];
   clone.querySelector("[data-burgerMenu]").innerHTML       = create_burger_menu(wp_navigation);
@@ -115,7 +101,7 @@ function create_burger_menu(navigation_array) {
     menu_list_top = '<button id="burgerMenuButton"><span id="burgerBar1"></span><span id="burgerBar2"></span><span id="burgerBar3"></span></button><ol id="menuList">';
     let menu_list = '';
     navigation_array.forEach(function(element) {
-      if (element['slug']=='frontpage') {
+      if (element['slug']=='frontpage') { // The frontpage link title must be "Forside"
         menu_list = '<li><a href="/" id="frontpage_link">Forsiden</a></li>' + menu_list;
       } else {
 	    menu_list += '<li><a href=?page='+element['slug']+'>'+element['title']['rendered']+'</a></li>';
@@ -148,6 +134,20 @@ function toggle_burger_menu() {
 function add_event_listeners() {
   let burger_menu = document.getElementById("burgerMenuButton");
   burger_menu.addEventListener('click', toggle_burger_menu, false);
+}
+
+
+
+function scrollFunction() {
+  if (document.body.scrollTop > (window.screen.height-100) || document.documentElement.scrollTop > window.screen.height-100) {
+    document.getElementById('burgerBar1').style.background = "#000";
+    document.getElementById('burgerBar2').style.background = "#000";
+    document.getElementById('burgerBar3').style.background = "#000";
+  } else {
+    document.getElementById('burgerBar1').style.background = "#fff";
+    document.getElementById('burgerBar2').style.background = "#fff";
+    document.getElementById('burgerBar3').style.background = "#fff";
+  }
 }
 
 
