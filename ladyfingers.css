@@ -1075,14 +1075,17 @@ q {
   quotes: "“" "”" "‘" "’";
 }
 q:before {
+	font-size:1.8em;
+	font-weight:bold;
     content: open-quote;
     font-style:italic;
-    margin:0.5em;
+    margin:0 0 0 -0.8em;
 }
 q:after {
+	font-weight:bold;
     content: close-quote;
     font-style:italic;
-    margin:0.5em;
+    margin:0 0.5em 0 0;
 }
 
 #presseomtale a {
