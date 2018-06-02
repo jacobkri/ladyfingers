@@ -136,6 +136,8 @@ function add_event_listeners() {
   burger_menu.addEventListener('click', toggle_burger_menu, false);
 }
 
+
+
 function scrollFunction() {
   if (document.body.scrollTop > (window.screen.height-100) || document.documentElement.scrollTop > window.screen.height-100) {
     document.getElementById('burgerBar1').style.background = "#000";
