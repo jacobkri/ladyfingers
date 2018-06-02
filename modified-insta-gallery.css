@@ -79,7 +79,7 @@
 	margin:0;
 }
 .instagallery-items .ig-item.ighover a:hover:after {
-    background: #007aff;
+    background: rgb(243,243,244,0.8);
     width: 100%;
     height: 100%;
 	opacity: 0.5;

@@ -1079,13 +1079,12 @@ q:before {
 	font-weight:bold;
     content: open-quote;
     font-style:italic;
-    margin:0 0 0 -0.8em;
+
 }
 q:after {
 	font-weight:bold;
     content: close-quote;
     font-style:italic;
-    margin:0 0.5em 0 0;
 }
 
 #presseomtale a {
@@ -1633,8 +1632,182 @@ q:after {
 }
 
 
+/************************ inspiration siden **********************/
+
+/************************ inspiration siden **********************/
+
+#inspiration {
+    padding: 6em 1em 4em 1em;
+}
+
+#inspiration img {
+    width: 100%;
+}
+
+#inspiration h4, #inspiration p {
+    margin: 1em 0 1em 0;
+}
+
+#tips {
+    margin-top: 6em;
+}
+
+#inspiration a {
+    text-decoration: none;
+    color: #000000;
+    border: #000000 solid 1px;
+    padding: 10px 40px;
+    line-height: 6em;
+}
+
+#inspiration a:hover {
+    color: #ffffff;
+    border: #000000 solid 1px;
+    background: #000000;
+    padding: 10px 40px;
+    transition: 0.5s;
+}
+
+#mandeguide iframe {
+    width: 100%;
+}
+
+@media screen and (min-width: 401px) {
+    #inspiration {
+        padding: 1em 10vw 1em 10vw;
+        margin: 0 auto;
+        max-width: 768px;
+    }
+}
 
 
+/************************ kontakt siden **********************/
+
+/************************ kontakt siden **********************/
+
+#kontaktBillede img {
+    width: 100%;
+    padding-left: 1em;
+}
+
+#formGrid {
+    padding: 4em 1em;
+}
+
+#formGrid tr {
+    font-size: 1em;
+    font-family: 'Open Sans', sans-serif;
+    line-height: 2em;
+}
+
+#formGrid h4 {
+    margin-top: 2em;
+}
+
+#formGrid i {
+    color: #000000;
+    padding: 2em 2em 0 0;
+    margin: 0;
+}
+
+#formGrid i:hover {
+    color: #799997;
+}
+
+#formGrid form input {
+    font-family:
+    display: block;
+    margin: 1em 0 2em 0;
+    height: 2em;
+    padding: 1em;
+    width: 20em;
+    border: #000000 solid 1px;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 0.7em;
+}
+
+#formGrid form textarea {margin:0 0 1em;
+    padding:1em;
+    width: 20em;
+    border: #000000 solid 1px;
+    margin: 1em 0 2em 0;
+    font-size: 0.7em;
+}
+
+#formGrid .button {
+    margin-top: 2em;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 400;
+    font-size: 1em;
+    border: #000000 solid 1px;
+    width: 100px;
+    height: 40px;
+    line-height: 1px;
+}
+
+#formGrid .button:hover {
+    font-family: 'Raleway', sans-serif;
+    font-weight: 400;
+    font-size: 1em;
+    border: #000000 solid 1px;
+    background: #000000;
+    width: 100px;
+    height: 40px;
+    transition: 0.5s;
+    cursor: pointer;
+    color: #fff;
+}
 
 
+@media only screen and (min-width: 769px) {
+
+    #formGrid h4 {
+    margin-top: 0;
+}
+
+#kontaktBillede {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+}
+
+#kontaktBillede img {
+    padding: 0;
+    grid-column: 1/9;
+}
+
+#formGrid{
+    padding: 4em 0;
+    display: grid;
+    grid-template-columns: 1fr 2fr 0.5fr 2fr 0.5fr 2fr 1fr;
+    grid-template-rows: 1fr;
+}
+
+#formGrid .formular {
+    grid-column: 2/3;
+    grid-row: 1/2;
+}
+
+    #formGrid .butik {
+        grid-column: 4/5;
+        grid-row: 1/2;
+    }
+
+    #formGrid .kontakt {
+        grid-column: 4/5;
+        grid-row: 1/2;
+        margin-top: 8em;
+    }
+
+    #formGrid .folg {
+        grid-column: 4/5;
+        grid-row: 1/2;
+        margin-top: 14em;
+    }
+
+    #formGrid .tider {
+        grid-column: 6/7;
+        grid-row: 1/2;
+    }
+
+}
 
