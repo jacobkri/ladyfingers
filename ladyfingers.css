@@ -488,10 +488,10 @@ a {
     text-decoration: none;
     color: #000000;
     border: #000000 solid 1px;
-    padding: 10px 40px;
-    line-height: 1.5em;
+    padding: 10px 30px;
     z-index:300000;
     display:block;
+    background: rgba(243,243,244, 0.5);
 }
 #gavekort_fixed:hover {
     color: #ffffff;
@@ -1891,6 +1891,7 @@ q:after {
     width: 100px;
     height: 40px;
     line-height: 1px;
+    background:none;
 }
 
 #formGrid .button:hover {
