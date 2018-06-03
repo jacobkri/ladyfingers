@@ -935,6 +935,7 @@ footer #copyright {
   }
 
   #special_smykker h2 {
+      font-size: 1.8em;
     position: static;
     white-space: normal;
   }
