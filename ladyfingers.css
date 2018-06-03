@@ -15,9 +15,9 @@ body {
 #site_header_logo_white {position:absolute;top:0.5em;left:0;text-align:center;width:100%;}
 #site_header_logo_white img {height:90px;}
 #site_header_follow_white {
-  position:absolute;top:2em;left:0;
+  position:absolute;top:2em;left:1.2em;
   z-index:3;
-  width:20vw; /* using a width in vw makes the element responsive without extra work */
+  width:25vw; /* using a width in vw makes the element responsive without extra work */
 }
 
 #site_header_follow_white a {
@@ -30,9 +30,9 @@ body {
 #site_header_logo_black {position:absolute;top:0.5em;left:0;text-align:center;width:100%;}
 #site_header_logo_black img {height:90px;}
 #site_header_follow_black {
-  position:absolute;top:2em;left:0;
+  position:absolute;top:2em;left:1em;
   z-index:3;
-  width:20vw; /* using a width in vw makes the element responsive without extra work */
+  width:25vw; /* using a width in vw makes the element responsive without extra work */
 }
 
 #site_header_follow_black a {
@@ -68,7 +68,7 @@ body {
     position: relative;
 }
 
-#site_header .headingWrap {
+#frontpage_heading.headingWrap {
     z-index:2;
     position: absolute;
     top: 50%;
@@ -76,13 +76,29 @@ body {
     transform: translate(-0%, -50%);
     max-width: 600px;
 }
-
-#site_header .headingWrap h1 {
-
+/*
+ *  ****************************
+ *
+ *     PAGE-SPECIFIC STYLES
+ *
+ *  ****************************
+ */
+#frontpage_heading.headingWrap h1 {
     color:#fff;
     padding:0;
 }
-
+#designerne_heading.headingWrap h1 {
+  text-align: center;
+  margin-top: 1em;
+  color: #000;
+  z-index: 2;
+}
+#jaegersborggade_heading.headingWrap h1 {
+  position: relative;
+  top:2em;left:2em;
+  color: #000;
+  z-index: 2;
+}
 
 /*************************** header slut ***************************/
 
@@ -429,7 +445,7 @@ a {
   position:fixed;
   top:0;
   right:0;
-  padding:1em;
+  padding:2.5em;
   overflow:hidden;
   height:4em;width:4em;
   z-index:2000; /* Very high z-index is needed due to conflict with Instagram Gallery code */
@@ -484,8 +500,8 @@ a {
   display:none;
   position:fixed;
   top:0;
-  left:0;
-  width:20vw; /* using a width in vw makes the element responsive without extra work */
+  left:1em;
+  width:25vw; /* using a width in vw makes the element responsive without extra work */
   z-index:2001; /* z-index higher than menu to make social-icons click-able. Sigh!? */
 }
 #site_header_follow_black_menu a {
@@ -620,7 +636,7 @@ footer #copyright {
 }
 
 @media screen and (max-width: 768px) {
-
+  #site_header_follow_black_menu,#site_header_follow_black,#site_header_follow_white {width:15vw;}
     #ladyfingers_forside .wrapper {
      grid-template-columns: 1fr;
     }
@@ -791,9 +807,12 @@ footer #copyright {
     justify-self: center;
 }
 }
-
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 500px) {
+  #frontpage_heading h1 {font-size:2em;}
   #site_header_follow_black_menu,#site_header_follow_black,#site_header_follow_white {left:-100vw;}
+}
+@media screen and (max-width: 400px) {
+  #site_header_logo_black_menu img,#site_header_logo_white img, #site_header_logo_black img{height:70px;}
   #site_header video {
     position: relative;
     right: 20em;
