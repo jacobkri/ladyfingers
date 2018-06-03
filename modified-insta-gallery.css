@@ -63,6 +63,12 @@
     justify-self: center;
 }
 
+.instagallery-actions {
+    grid-column:  5/9;
+    padding-top: 1em;
+
+}
+
 
 
 /**
@@ -341,12 +347,12 @@
 
     .instagallery-items {
         grid-column: 1/13;
+
     }
 
-
-
-
-
+    .instagallery-actions {
+        grid-column: 1;
+    }
 }
 
 @media screen and (max-width: 480px) {
