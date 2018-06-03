@@ -3,10 +3,11 @@
 
  <head>
   <title></title>
-  <meta name="description" content="">
+  <meta name="description" content=""> <!-- Should be filled automatically from Wordpress Custom Field, but out of time -->
+  <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel='stylesheet' href='ladyfingers.css' type='text/css'>
-  <link rel='stylesheet' href='modified-insta-gallery.css' type='text/css'> <!-- Our own Modified CSS for the "Instagram Gallery" Wordpress Plugin -->
+  <link rel="stylesheet" href="ladyfingers.css" type="text/css">
+  <link rel="stylesheet" href="modified-insta-gallery.css" type="text/css"> <!-- Our own Modified CSS for the "Instagram Gallery" Wordpress Plugin -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700%7CRaleway:400,700" rel="stylesheet">
   <link rel="stylesheet" href="fontawesome-all.css">
   </head>
@@ -14,7 +15,7 @@
  <body>
  
     <!-- jQuery start -->
-    <script type='text/javascript' src='//ladyfingers.beamtic.com/wordpress/wp-includes/js/jquery/jquery.js?ver=1.12.4'></script>
+    <script src="//ladyfingers.beamtic.com/wordpress/wp-includes/js/jquery/jquery.js?ver=1.12.4"></script>
     <!-- jQuery end -->
   
   <div id="application_content">
@@ -43,21 +44,22 @@
   <footer id="site_footer" data-GlobalSiteFooter></footer>
 </template>
 
-<!-- tornado.js - fetches the content from the wordpress back end -->  
-<script type="text/javascript" src="tornado.js"></script>
+   <!-- tornado.js - fetches the content from the wordpress back end -->  
+   <script src="tornado.js"></script>
 
-<!-- Insta-gallery Wordpress plugin -->
-<script type="text/javascript">
-let insgalajax = {"ajax_url":"https://ladyfingers.beamtic.com/wordpress\/wp-admin\/admin-ajax.php"};
-</script>
+  <!-- Insta-gallery Wordpress plugin -->
+   <script>
+   let insgalajax = {"ajax_url":"https://ladyfingers.beamtic.com/wordpress\/wp-admin\/admin-ajax.php"};
+   </script>
   <!-- 
    The code in this file was moved to tornado.js so that we can load the plugin after loading content from Wordpress,
    hence why this is noW uncommented.
    <script type='text/javascript' src='/wordpress/wp-content/plugins/insta-gallery/assets/insta-gallery-min.js?ver=1.6.1'></script>
   -->
-<script type="text/javascript" src="//ladyfingers.beamtic.com/wordpress/wp-content/plugins/insta-gallery/assets/swiper/swiper.jquery.min.js"></script>
-<script type="text/javascript" src="//ladyfingers.beamtic.com/wordpress/wp-content/plugins/insta-gallery/assets/magnific-popup/jquery.magnific-popup.min.js"></script>
-<!-- Insta-gallery Wordpress plugin -->
+   <script src="//ladyfingers.beamtic.com/wordpress/wp-content/plugins/insta-gallery/assets/swiper/swiper.jquery.min.js"></script>
+   <script src="//ladyfingers.beamtic.com/wordpress/wp-content/plugins/insta-gallery/assets/magnific-popup/jquery.magnific-popup.min.js"></script>
+  <!-- Insta-gallery Wordpress plugin -->
+
 
   </body>
 
