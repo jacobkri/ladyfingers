@@ -1811,3 +1811,195 @@ q:after {
 
 }
 
+
+/************************ designer single siden **********************/
+
+/************************ designer single siden **********************/
+
+.designer_page {
+    background: #fcfbf4;
+    padding: 4em 1em;
+}
+
+.designer_page img {
+    width: 100%;
+}
+
+.designer_page_text {
+    margin-top: 4em;
+}
+
+.brands, .brand {
+    padding: 4em 1em;
+}
+
+.brand {
+    text-align: center;
+}
+
+.brand img {
+    width: 100%;
+    max-width: 400px;
+}
+
+.brands h2, .brand h2 {
+    text-align: center;
+}
+
+.folgMig {
+    background-image: url(https://ladyfingers.beamtic.com/wordpress/wp-content/uploads/2018/06/sabinesingle_1600.jpg);
+    /* Set a specific height */
+    min-height: 500px;
+
+    /* Create the parallax scrolling effect */
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    color: #fff;
+    padding: 0 1em;
+    display: table;
+}
+
+.folgMig .container {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.grid img {
+    width: 100%;
+}
+
+.folgMig .link a {
+    text-decoration: none;
+    color: #fff;
+    border: #fff solid 1px;
+    padding: 10px 40px;
+    line-height: 6em;
+}
+
+.folgMig .link a:hover {
+    color: #000000;
+    border: #fff solid 1px;
+    background: #fff;
+    padding: 10px 40px;
+    transition: 0.5s;
+}
+
+.folgMig i {
+    color: #fff;
+    padding: 2em 2em 0 0;
+    margin: 0;
+    font-size: 1.2em;
+}
+
+.folgMig i:hover {
+    color: #799997;
+}
+
+.designer_galleri {
+    padding: 4em 0;
+}
+
+.designer_galleri h2 {
+    text-align: center;
+}
+
+.designer_galleri .insta {
+    padding: 2em 0;
+}
+
+@media only screen and (min-width: 401px) {
+    .designer_page, .brands, .folgMig, .designer_galleri {
+        padding: 4em 5em;
+    }
+
+    .folgMig {
+        width: 100vw;
+    }
+}
+
+@media only screen and (min-width: 769px) {
+
+.designer_page {
+    display: grid;
+    grid-template-columns: repeat(12,1fr);
+    padding-bottom: 6em;
+}
+
+.designer_page_text {
+    grid-column: 2/6;
+    grid-row: 1;
+    position: relative;
+    top: 2em;
+}
+
+.designer_page_image {
+    grid-column: 7/11;
+    grid-row: 1;
+}
+
+    .brands .grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-gap: 1em;
+    }
+
+    .brands .grid img:nth-of-type(1){
+        grid-column: 1/2;
+    }
+
+    .brands .grid img:nth-of-type(2){
+        grid-column: 2/3;
+    }
+
+    .brands .grid a {
+        align-self: center;
+    }
+
+    .folgMig {
+        height: 100%;
+        padding: 0;
+    }
+
+    .folgMig .container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        height: 100%;
+    }
+
+    .folgMig .left {
+        grid-column: 1/2;
+        align-self: center;
+        justify-self: center;
+        padding-left: 6em;
+    }
+
+    .folgMig .link {
+        grid-column: 2/3;
+        justify-self: center;
+        align-self: center;
+        padding-right: 6em;
+    }
+
+}
+
+@media only screen and (min-width: 1025px) {
+    .designer_page_text {
+        position: relative;
+        top: 10em;
+    }
+
+    .brands {
+        padding: 4em 10em;
+    }
+
+    .folgMig .left {
+        padding-left: 10em;
+    }
+
+    .folgMig .link {
+        padding-right: 10em;
+    }
+}

@@ -121,19 +121,19 @@
     margin: 10px 0px;
 }
 .instagallery-actions .igact-instalink {
-    line-height: 20px;
     font-size: 16px;
-    background: #c32a67;
-    color: #fff;
-    display: inline-block;
-    padding: 5px 15px;
+    background: #fff;
+    color: #000000;
+    border: #000000 solid 1px;
+    padding: 10px 40px;
 	-webkit-transition: all .3s;
 	transition: all .3s;
     text-decoration:none;
 }
 .instagallery-actions .igact-instalink:hover {
-    background: #da894a;
+    background: #000000;
 	text-decoration:none;
+    color: #fff;
 }
 
 /*
@@ -311,6 +311,9 @@
 		min-width: 50%;
 	}
 
-    .instagallery-items {display:block;margin:0;}
+    .instagallery-items {
+        display: grid;
+        grid-template-columns: 1fr;
+    }
 }
 
