@@ -62,7 +62,7 @@ body {
 }
 
 #site_header {
-    background: #E2E2E2;
+   min-height: 0;
   max-height:100vh;
   overflow:hidden;
     position: relative;
@@ -1481,7 +1481,7 @@ q:after {
 /************************ Jægersborggade siden **********************/
 
 #jager {
-    margin-top: 6em;
+
 }
 
 #jager img {
@@ -1559,7 +1559,9 @@ q:after {
 }
 
 #jager .text {
-    grid-column: 2/10;
+    grid-column: 2/12;
+    column-count: 2;
+    column-gap: 2em;
     padding: 4em 0 4em 0;
 }
 
@@ -1716,6 +1718,7 @@ q:after {
 /************************ kontakt siden **********************/
 
 #kontaktBillede img {
+
     width: 100%;
     padding-left: 1em;
 }
@@ -1796,6 +1799,7 @@ q:after {
 }
 
 #kontaktBillede {
+    padding: 4em 0;
     display: grid;
     grid-template-columns: repeat(12, 1fr);
 }
