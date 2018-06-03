@@ -1,4 +1,3 @@
-
 // Define certain variables globally for use inside our functions
   // Note. Defining the variables (using let) outside the functions will make them global (accessible inside functions..)
 let API_URL         = 'https://ladyfingers.beamtic.com/wordpress/wp-json/wp/v2/';
@@ -12,20 +11,10 @@ let global_site_footer_url = API_URL + 'posts?filter[name]=footer';
 let not_found_url          = API_URL + 'posts?filter[name]=404-not-found'; // Custom "Not Found" page from wordpress
 let navigation_url         = API_URL + 'posts?filter[category_name]=navigation'; // Fetch all posts in the navigation category
 
-
-
 main(); // Run the show :-D
-
-
-// The below code calls "scrollFunction()" to change the color of the burgerMenu when needed
-// Because of design-requirements, this is only needed on some pages. I.e. Some pages has a white #site_header and others has a video or an image.
-if (!document.getElementById('site_header_follow_white')) { // If the header background is dark, switch to white burgerBar's in the #burgerMenu
-	window.onscroll = function() {scrollFunction()};
-}
 
 async function main() {
   // Function to load required data from Wordpress back-end
-	
   let default_url; // Used to fetch content on individual pages I.e. frontpage and about
   
   if (req_page!==false) { // If the "page" parameter is NOT empty, use it to fetch content from wordpress
@@ -52,7 +41,6 @@ async function loadJson(FINAL_API_URL) {
 	return wp_data;
   }
 }
-
 
 async function showContent() {
   let footer_content;
@@ -87,18 +75,25 @@ async function showContent() {
   document.querySelector('title').innerHTML                = wp_page[0]['title']['rendered']; // Most likely, this will not work in search engines
   clone.querySelector("[data-headerH1]").innerHTML         = wp_page[0]['title']['rendered'];
   clone.querySelector("[data-content]").innerHTML          = wp_page[0]['content']['rendered'];
-  clone.querySelector("[data-burgerMenu]").innerHTML       = create_burger_menu(wp_navigation);
+  clone.querySelector("[data-burgerMenu]").innerHTML       += create_burger_menu(wp_navigation);
   clone.querySelector("[data-GlobalSiteFooter]").innerHTML = footer_content;
   document.querySelector("#application_content").appendChild(clone);
   // Featured media: wp_data[0]['wp:featuredmedia']['href']
 
   load_instagram_plugin(); // Runs the Instagram Gallery Wordpress Plugin
   add_event_listeners(); // Add <button> Event Listeners after loading content
+  
+  //The below code calls "scrollFunction()" to change the color of the burgerMenu when needed
+  //Because of design-requirements, this is only needed on some pages. I.e. Some pages has a white #site_header and others has a video or an image.
+  if (!document.getElementById('site_header_follow_black')) {
+	// If the header background is dark, switch to white burgerBar's in the #burgerMenu
+	window.onscroll = function() {scrollFunction()};
+  }
 }
 
 function create_burger_menu(navigation_array) {
   if (navigation_array !== false) {
-    menu_list_top = '<button id="burgerMenuButton"><span id="burgerBar1"></span><span id="burgerBar2"></span><span id="burgerBar3"></span></button><ol id="menuList">';
+    menu_list_top = '<ol id="menuList">';
     let menu_list = '';
     navigation_array.forEach(function(element) {
       if (element['slug']=='frontpage') { // The frontpage link title must be "Forside"
@@ -118,14 +113,47 @@ function toggle_burger_menu() {
 	let menu_list   = document.getElementById("menuList");
 	
 	if (menu_state_open == true) {
-	  burger_menu.className           = "menuClosed";
-	  // menu_list.className = "listClosed";
-	  setTimeout(function(){
+	  burger_menu.className = "menuClosed";
+	  document.getElementById("burgerMenuButton").disabled = true; // disable button while animation runs
+	  
+	  setTimeout(function(){ // After the animation 
 	    burger_menu.className = "";
+	    // document.querySelector("body").style.overflowY = "auto"; // Shows the scrollbar when menu is closed
+	    document.getElementById("burgerMenuButton").disabled = false; // enable button when animation is done
 	  }, 1000);
+	  
 	  menu_state_open = false;
+	  
+	  document.getElementById('site_header_logo_black_menu').style.display = "none"; // Instant-Hide black logo in menu
+		document.getElementById('site_header_follow_black_menu').style.display = "none";  // Instant-Hide black social icons in menu
+		
+	  // Depending on which page was requested, we need either a white or black logo in #site_header
+	  if(document.getElementById('site_header_logo_white')) {
+	    document.getElementById('site_header_logo_white').style.display = "block";
+	    document.getElementById('site_header_follow_white').style.display = "block";
+	  } else {
+		document.getElementById('site_header_logo_black').style.display = "block";
+		document.getElementById('site_header_follow_black').style.display = "block";  
+	  }
+	  
 	} else {
-	  burger_menu.className           = "menuOpen";
+	  burger_menu.className = "menuOpen";
+	  document.getElementById("burgerMenuButton").disabled = true; // disable button while animation runs
+	  // Depending on which page was requested, we need either a white or black logo in #site_header
+	  if(document.getElementById('site_header_logo_white')) {
+	    document.getElementById('site_header_logo_white').style.display = "none";
+	    document.getElementById('site_header_follow_white').style.display = "none";
+	  } else {
+		document.getElementById('site_header_logo_black').style.display = "none";
+		document.getElementById('site_header_follow_black').style.display = "none";  
+	  }
+	  
+	  setTimeout(function(){
+	    // document.querySelector("body").style.overflowY = "hidden"; // Hides the scrollbar while meny open
+	    document.getElementById("burgerMenuButton").disabled = false; // enable button when animation is done
+		document.getElementById('site_header_logo_black_menu').style.display = "block"; // Show black logo in menu
+		document.getElementById('site_header_follow_black_menu').style.display = "block"; // show black social icons in menu
+	  }, 1000);
 	 //  menu_list.className = "listOpen";
 	  menu_state_open = true;
 	}
@@ -135,8 +163,6 @@ function add_event_listeners() {
   let burger_menu = document.getElementById("burgerMenuButton");
   burger_menu.addEventListener('click', toggle_burger_menu, false);
 }
-
-
 
 function scrollFunction() {
   if (document.body.scrollTop > (window.screen.height-100) || document.documentElement.scrollTop > window.screen.height-100) {
