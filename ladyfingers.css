@@ -10,7 +10,6 @@ body {
     overflow-x:hidden;
 }
 
-
 /*************************** header ***************************/
 #site_header_logo_white {position:absolute;top:0.5em;left:0;text-align:center;width:100%;}
 #site_header_logo_white img {height:90px;}
@@ -444,6 +443,7 @@ a {
   padding:0.1em 0;
   width:100%;
 }
+
 #burgerMenu a:hover {color:#799997;}
 #burgerMenu span {
 	display:block;
