@@ -1332,9 +1332,9 @@ q:after {
 }
 
 
-/************************ designere siden **********************/
+/************************ designerne siden **********************/
 
-/************************ designere siden **********************/
+/************************ designerne siden **********************/
 
 .designer_overskrift {
     padding: 0 1rem;
@@ -1350,7 +1350,7 @@ q:after {
     height: 38em;
     background: #d2af91;
     position: absolute;
-    top:25em;
+    top:30em;
     left:0;
     width:100%;
     z-index: -1;
@@ -1418,7 +1418,7 @@ q:after {
 
     .baggrund {
     height: 25em;
-    top: 20em;
+    top: 25em;
 }
 
     .logo {
@@ -1442,7 +1442,7 @@ q:after {
 
     .baggrund {
     height: 30em;
-    top: 25em;
+    top: 30em;
 }
 
     .logo {
@@ -1466,7 +1466,7 @@ q:after {
 
     .baggrund {
     height: 40em;
-    top: 25em;
+    top: 30em;
 }
 
     .logo {
