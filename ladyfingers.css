@@ -453,6 +453,8 @@ a {
   z-index: 2;
 }
 
+
+
 /*********************************
  *
  *     BURGER MENU
@@ -1065,6 +1067,7 @@ footer #copyright {
 
 #smykkefaellesskab h2 {
     grid-column: 2/7;
+    font-size: 1.8em;
 }
 
 #smykkefaellesskab h4 {
@@ -1522,7 +1525,7 @@ q:after {
 /************************ Jægersborggade siden **********************/
 
 #jager {
-
+    overflow: hidden;
 }
 
 #jager img {
@@ -1757,6 +1760,10 @@ q:after {
 /************************ kontakt siden **********************/
 
 /************************ kontakt siden **********************/
+
+#kontaktBillede {
+    overflow: hidden;
+}
 
 #kontaktBillede img {
 
@@ -2095,4 +2102,14 @@ q:after {
 #gavekortSite img {
     width: 100%;
     padding: 4em 0 4em 0;
+}
+
+
+@media screen and (max-width: 768px) {
+  #jaegersborggade_heading.headingWrap h1 {
+  position: relative;
+  top:3.5em;left:0.6em;
+  color: #000;
+  z-index: 2;
+    width: 90%;
 }
