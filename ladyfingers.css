@@ -52,9 +52,9 @@ body {
 #custom_header_content #site_header_follow_black a:hover {color: #799997;;}
 #custom_header_content #site_header_follow_black a:active {color: #799997;}
 
-#site_header video, #site_header #header_img  {
+#site_header #header_img  {
   z-index:1;
-  width:100vw;
+  width: 100%;
 }
 
 #site_header video {
@@ -453,6 +453,27 @@ a {
   z-index: 2;
 }
 
+#guide.headingWrap h1 {
+  color: #000;
+  z-index: 2;
+  margin: 1em 0;
+  width:100%;
+  text-align: center;
+}
+
+#omOs.headingWrap h1 {
+    z-index:2;
+    position: absolute;
+    top: 50%;
+    left: 20%;
+    transform: translate(-0%, -50%);
+    max-width: 600px;
+    color:#fff;
+}
+
+
+
+
 
 
 /*********************************
@@ -617,6 +638,10 @@ footer #copyright {
       width: auto;
       height: 100vh;
     }
+
+
+
+
 
     #ladyfingers_forside .ladyfingers_text {
       top: 0;
@@ -1057,9 +1082,9 @@ footer #copyright {
 
 
 
-/************************ about siden **********************/
+/************************ om os siden **********************/
 
-/************************ about siden **********************/
+/************************ om os siden **********************/
 
 #smykkefaellesskab {
     padding: 6em 1em 4em 1em;
@@ -1708,9 +1733,11 @@ q:after {
 }
 
 
-/************************ inspiration siden **********************/
+/************************ guide siden **********************/
 
-/************************ inspiration siden **********************/
+/************************ guide siden **********************/
+
+
 
 #inspiration {
     padding: 6em 1em 4em 1em;
@@ -1718,6 +1745,11 @@ q:after {
 
 #inspiration img {
     width: 100%;
+}
+
+#inspiration span {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1em;
 }
 
 #inspiration h4, #inspiration p {
