@@ -2059,3 +2059,21 @@ q:after {
         padding-right: 10em;
     }
 }
+
+
+/************************ gavekort siden **********************/
+
+/************************ gavekort siden **********************/
+
+#gavekort {
+    padding: 4em 1em;
+}
+
+#gavekortSite h3, #gavekortSite p{
+    margin-top: 1em;
+}
+
+#gavekortSite img {
+    width: 100%;
+    padding: 4em 0 4em 0;
+}
