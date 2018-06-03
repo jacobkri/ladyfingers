@@ -17,6 +17,7 @@ body {
 #site_header_follow_white {
   position:absolute;top:2em;left:0;
   z-index:3;
+  width:20vw; /* using a width in vw makes the element responsive without extra work */
 }
 
 #site_header_follow_white a {
@@ -31,6 +32,7 @@ body {
 #site_header_follow_black {
   position:absolute;top:2em;left:0;
   z-index:3;
+  width:20vw; /* using a width in vw makes the element responsive without extra work */
 }
 
 #site_header_follow_black a {
@@ -435,7 +437,7 @@ a {
   border-bottom-left-radius:70%;
 }
 #burgerMenu button {
-	float:right;
+	position:fixed;top:1em;right:1em;
 	border:0;
 	display:block;
 	margin:0 auto 4em;
@@ -446,7 +448,8 @@ a {
     background: none;
 }
 #burgerMenu button:hover {color:#000000;cursor:pointer;}
-#burgerMenu ol {list-style-type:none;width:100%;clear:both;}
+#burgerMenu ol {list-style-type:none;width:100%;clear:both;margin:8em 0;}
+#burgerMenu li + li {margin: 1.5em 0;}
 #burgerMenu a {
   display:block;
   text-align:center;
@@ -456,18 +459,44 @@ a {
   padding:0.1em 0;
   width:100%;
 }
-#burgerMenu a:hover {color:#ff0000;}
+#burgerMenu a:hover {color:#799997;}
 #burgerMenu span {
 	display:block;
 	width:95%;
-	height:5px;
+    height:3px;
 	background:#fff;
 	margin: 0 auto;
 }
 #burgerMenu span + span {
-	margin:10px auto 0;
+	margin:5px auto 0;
 }
-/* Animations */
+ /*
+    Black logo and social follow links inside menu
+ */
+#site_header_logo_black_menu {
+  display:none;
+  position:fixed;
+  top:0;
+  width:100%;
+  text-align:center;
+}
+#site_header_follow_black_menu {
+  display:none;
+  position:fixed;
+  top:0;
+  left:0;
+  width:20vw; /* using a width in vw makes the element responsive without extra work */
+  z-index:2001; /* z-index higher than menu to make social-icons click-able. Sigh!? */
+}
+#site_header_follow_black_menu a {
+  width:1vw;height:1vw;
+  font-size:1.2em;
+  color:#000;
+  padding:1.5em 1em;
+  float:left;
+}
+
+/* Menu Animations */
 .menuOpen {
   animation: open_menu_anim 1s forwards;
 }
@@ -476,14 +505,14 @@ a {
 }
 
 @keyframes close_menu_anim {
-  0% {width:100%;height:100vh;background:rgba(243,243,244, 1);}
+  0% {width:100%;height:100vh;background:rgba(243,243,244, 0.8);}
   50% {width:100%;height:4em;}
   100% {width:4em;height:4em;background:rgba(243,243,244, 0);border-bottom-left-radius:100%;}
 }
 @keyframes open_menu_anim {
   0% {width:4em;height:4em;}
   50% {width:100%;height:4em;border-bottom-left-radius:100%;}
-  100% {width:100%;height:100vh;background:rgba(243,243,244, 1);border-bottom-left-radius:0;}
+  100% {width:100%;height:100vh;background:rgba(243,243,244, 0.8);border-bottom-left-radius:0;}
 }
 
 
@@ -764,6 +793,7 @@ footer #copyright {
 }
 
 @media screen and (max-width: 400px) {
+  #site_header_follow_black_menu,#site_header_follow_black,#site_header_follow_white {left:-100vw;}
   #site_header video {
     position: relative;
     right: 20em;
