@@ -11,7 +11,8 @@ let global_site_footer_url = API_URL + 'posts?filter[name]=footer';
 let not_found_url          = API_URL + 'posts?filter[name]=404-not-found'; // Custom "Not Found" page from wordpress
 let navigation_url         = API_URL + 'posts?filter[category_name]=navigation'; // Fetch all posts in the navigation category
 
-main(); // Run the show :-D
+document.addEventListener("DOMContentLoaded", main);
+// main(); // Run the show :-D
 
 async function main() {
   // Function to load required data from Wordpress back-end
@@ -82,10 +83,11 @@ async function showContent() {
 
   load_instagram_plugin(); // Runs the Instagram Gallery Wordpress Plugin
   add_event_listeners(); // Add <button> Event Listeners after loading content
+  initMap();
   
   //The below code calls "scrollFunction()" to change the color of the burgerMenu when needed
   //Because of design-requirements, this is only needed on some pages. I.e. Some pages has a white #site_header and others has a video or an image.
-  if (!document.getElementById('site_header_follow_black')) {
+  if (!document.querySelector('#site_header_follow_black')) {
 	// If the header background is dark, switch to white burgerBar's in the #burgerMenu
 	window.onscroll = function() {scrollFunction()};
   }
@@ -96,12 +98,20 @@ function create_burger_menu(navigation_array) {
     menu_list_top = '<ol id="menuList">';
     let menu_list = '';
     navigation_array.forEach(function(element) {
-      if (req_page!==element['slug']) {
-        if (element['slug']=='frontpage') { // The frontpage link title must be "Forside"
-        menu_list = '<li><a href="/" id="frontpage_link">Forsiden</a></li>' + menu_list;
-        } else {
-	      menu_list += '<li><a href=?page='+element['slug']+'>'+element['title']['rendered']+'</a></li>';
-        }
+      let link_title; // Used to easily set the title, and avoid more nested if/else statements
+      let link_src; // Same as above :-D
+      if (element['slug']=='frontpage') { // If the curent item in the array is the frontpage
+          link_title = 'Forsiden'; // Different title on frontpage link - better for UX?
+          link_src = '/'; // There is no need to link to ?page=frontpage, and doing so might lead to duplicate content in SE
+      } else { // If not the frontpage
+        link_title = element['title']['rendered']; // Title same as title in Wordpress 
+        link_src   = '/?page=' + element['slug']; // Link to URL parameter
+      }
+      
+      if (req_page!==element['slug']) { // If the requested page does NOT match the current item in the array, show normal menu link
+	      menu_list += '<li><a href='+link_src+'>'+link_title+'</a></li>';
+      } else { // If the requested page DOES match... apply "current_page" styles
+    	  menu_list += '<li><a href='+link_src+' class="current_page">'+link_title+'</a></li>';
       }
     });
     return menu_list_top + menu_list + '</ol>';
@@ -111,53 +121,53 @@ function create_burger_menu(navigation_array) {
 }
 
 function toggle_burger_menu() {
-	let burger_menu = document.getElementById("burgerMenu");
-	let menu_list   = document.getElementById("menuList");
+	let burger_menu = document.querySelector("#burgerMenu");
+	let menu_list   = document.querySelector("#menuList");
 	
 	if (menu_state_open == true) {
 	  burger_menu.className = "menuClosed";
 	  toggleBurgerColor(); // When menu is closed, find out if we need to change burgerBar colors
-	  document.getElementById("burgerMenuButton").disabled = true; // disable button while animation runs
+	  document.querySelector("#burgerMenuButton").disabled = true; // disable button while animation runs
 	  
 	  setTimeout(function(){ // After the animation 
 	    burger_menu.className = "";
 	    // document.querySelector("body").style.overflowY = "auto"; // Shows the scrollbar when menu is closed
-	    document.getElementById("burgerMenuButton").disabled = false; // enable button when animation is done
+	    document.querySelector("burgerMenuButton").disabled = false; // enable button when animation is done
 	  }, 1000);
 	  
 	  menu_state_open = false;
 	  
-	  document.getElementById('site_header_logo_black_menu').style.display = "none"; // Instant-Hide black logo in menu
-		document.getElementById('site_header_follow_black_menu').style.display = "none";  // Instant-Hide black social icons in menu
+	  document.querySelector('#site_header_logo_black_menu').style.display = "none"; // Instant-Hide black logo in menu
+	  document.querySelector('#site_header_follow_black_menu').style.display = "none";  // Instant-Hide black social icons in menu
 		
 	  // Depending on which page was requested, we need either a white or black logo in #site_header
-	  if(document.getElementById('site_header_logo_white')) {
-	    document.getElementById('site_header_logo_white').style.display = "block";
-	    document.getElementById('site_header_follow_white').style.display = "block";
+	  if(document.querySelector('#site_header_logo_white')) {
+		document.querySelector('#site_header_logo_white').style.display = "block";
+		document.querySelector('#site_header_follow_white').style.display = "block";
 	  } else {
-		document.getElementById('site_header_logo_black').style.display = "block";
-		document.getElementById('site_header_follow_black').style.display = "block";  
+		document.querySelector('#site_header_logo_black').style.display = "block";
+		document.querySelector('#site_header_follow_black').style.display = "block";  
 	  }
 	  
 	} else {
 	  burger_menu.className = "menuOpen";
 	  toggleBurgerColor(); // When menu is opened, change burgerBar colors to black
 	  
-	  document.getElementById("burgerMenuButton").disabled = true; // disable button while animation runs
+	  document.querySelector("#burgerMenuButton").disabled = true; // disable button while animation runs
 	  // Depending on which page was requested, we need either a white or black logo in #site_header
-	  if(document.getElementById('site_header_logo_white')) {
-	    document.getElementById('site_header_logo_white').style.display = "none";
-	    document.getElementById('site_header_follow_white').style.display = "none";
+	  if(document.querySelector('#site_header_logo_white')) {
+		document.querySelector('#site_header_logo_white').style.display = "none";
+		document.querySelector('#site_header_follow_white').style.display = "none";
 	  } else {
-		document.getElementById('site_header_logo_black').style.display = "none";
-		document.getElementById('site_header_follow_black').style.display = "none";  
+		document.querySelector('#site_header_logo_black').style.display = "none";
+		document.querySelector('#site_header_follow_black').style.display = "none";  
 	  }
 	  
 	  setTimeout(function(){
 	    // document.querySelector("body").style.overflowY = "hidden"; // Hides the scrollbar while meny open
-	    document.getElementById("burgerMenuButton").disabled = false; // enable button when animation is done
-		document.getElementById('site_header_logo_black_menu').style.display = "block"; // Show black logo in menu
-		document.getElementById('site_header_follow_black_menu').style.display = "block"; // show black social icons in menu
+		document.querySelector("#burgerMenuButton").disabled = false; // enable button when animation is done
+		document.querySelector('#site_header_logo_black_menu').style.display = "block"; // Show black logo in menu
+		document.querySelector('#site_header_follow_black_menu').style.display = "block"; // show black social icons in menu
 	  }, 1000);
 	 //  menu_list.className = "listOpen";
 	  menu_state_open = true;
@@ -165,7 +175,7 @@ function toggle_burger_menu() {
 	
 }
 function add_event_listeners() {
-  let burger_menu = document.getElementById("burgerMenuButton");
+  let burger_menu = document.querySelector("#burgerMenuButton");
   burger_menu.addEventListener('click', toggle_burger_menu, false);
 }
 
@@ -182,15 +192,15 @@ function scrollFunction() {
 function toggleBurgerColor() {
 	
 	let chosenColor = '#000';
-	if ((document.getElementById('site_header_logo_white')) && (menu_state_open!==false)) {
+	if ((document.querySelector('#site_header_logo_white')) && (menu_state_open!==false)) {
 	  // Change burgerBar color to white if burgerMenu is open AND element ID "site_header_logo_white" exists
 	  chosenColor = '#fff';
 	} else {
 	  chosenColor = '#000'; // Else we change color of burgerBars to black
 	}
-	document.getElementById('burgerBar1').style.background = chosenColor;
-	document.getElementById('burgerBar2').style.background = chosenColor;
-	document.getElementById('burgerBar3').style.background = chosenColor;
+	document.querySelector('#burgerBar1').style.background = chosenColor;
+	document.querySelector('#burgerBar2').style.background = chosenColor;
+	document.querySelector('#burgerBar3').style.background = chosenColor;
 }
 
 
@@ -223,7 +233,179 @@ function GetURLParameter(sParam) {
 
 
 
-
+function initMap() {
+    // Styles a map in night mode.
+	let locationLadies = {lat: 55.6919103, lng: 12.5453035};  
+    let map = new google.maps.Map(document.querySelector('#map'), {
+      center: locationLadies,
+      zoom: 17,
+      styles: [
+    	  {
+    		    "elementType": "geometry",
+    		    "stylers": [
+    		      {
+    		        "color": "#f5f5f5"
+    		      }
+    		    ]
+    		  },
+    		  {
+    		    "elementType": "labels.icon",
+    		    "stylers": [
+    		      {
+    		        "visibility": "off"
+    		      }
+    		    ]
+    		  },
+    		  {
+    		    "elementType": "labels.text.fill",
+    		    "stylers": [
+    		      {
+    		        "color": "#616161"
+    		      }
+    		    ]
+    		  },
+    		  {
+    		    "elementType": "labels.text.stroke",
+    		    "stylers": [
+    		      {
+    		        "color": "#f5f5f5"
+    		      }
+    		    ]
+    		  },
+    		  {
+    		    "featureType": "administrative.land_parcel",
+    		    "elementType": "labels.text.fill",
+    		    "stylers": [
+    		      {
+    		        "color": "#bdbdbd"
+    		      }
+    		    ]
+    		  },
+    		  {
+    		    "featureType": "poi",
+    		    "elementType": "geometry",
+    		    "stylers": [
+    		      {
+    		        "color": "#eeeeee"
+    		      }
+    		    ]
+    		  },
+    		  {
+    		    "featureType": "poi",
+    		    "elementType": "labels.text.fill",
+    		    "stylers": [
+    		      {
+    		        "color": "#757575"
+    		      }
+    		    ]
+    		  },
+    		  {
+    		    "featureType": "poi.park",
+    		    "elementType": "geometry",
+    		    "stylers": [
+    		      {
+    		        "color": "#e5e5e5"
+    		      }
+    		    ]
+    		  },
+    		  {
+    		    "featureType": "poi.park",
+    		    "elementType": "labels.text.fill",
+    		    "stylers": [
+    		      {
+    		        "color": "#9e9e9e"
+    		      }
+    		    ]
+    		  },
+    		  {
+    		    "featureType": "road",
+    		    "elementType": "geometry",
+    		    "stylers": [
+    		      {
+    		        "color": "#ffffff"
+    		      }
+    		    ]
+    		  },
+    		  {
+    		    "featureType": "road.arterial",
+    		    "elementType": "labels.text.fill",
+    		    "stylers": [
+    		      {
+    		        "color": "#757575"
+    		      }
+    		    ]
+    		  },
+    		  {
+    		    "featureType": "road.highway",
+    		    "elementType": "geometry",
+    		    "stylers": [
+    		      {
+    		        "color": "#dadada"
+    		      }
+    		    ]
+    		  },
+    		  {
+    		    "featureType": "road.highway",
+    		    "elementType": "labels.text.fill",
+    		    "stylers": [
+    		      {
+    		        "color": "#616161"
+    		      }
+    		    ]
+    		  },
+    		  {
+    		    "featureType": "road.local",
+    		    "elementType": "labels.text.fill",
+    		    "stylers": [
+    		      {
+    		        "color": "#9e9e9e"
+    		      }
+    		    ]
+    		  },
+    		  {
+    		    "featureType": "transit.line",
+    		    "elementType": "geometry",
+    		    "stylers": [
+    		      {
+    		        "color": "#e5e5e5"
+    		      }
+    		    ]
+    		  },
+    		  {
+    		    "featureType": "transit.station",
+    		    "elementType": "geometry",
+    		    "stylers": [
+    		      {
+    		        "color": "#eeeeee"
+    		      }
+    		    ]
+    		  },
+    		  {
+    		    "featureType": "water",
+    		    "elementType": "geometry",
+    		    "stylers": [
+    		      {
+    		        "color": "#c9c9c9"
+    		      }
+    		    ]
+    		  },
+    		  {
+    		    "featureType": "water",
+    		    "elementType": "labels.text.fill",
+    		    "stylers": [
+    		      {
+    		        "color": "#9e9e9e"
+    		      }
+    		    ]
+    		  }
+    		]
+    });
+    let marker = new google.maps.Marker({
+        position: locationLadies,
+        map: map,
+        title: 'Ladyfingers'
+    });
+  }
 
 
 

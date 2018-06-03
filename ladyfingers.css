@@ -11,9 +11,8 @@ body {
 
 }
 
-
 /*************************** header ***************************/
-#site_header_logo_white {position:absolute;top:0.5em;left:0;text-align:center;width:100%;}
+#site_header_logo_white {position:absolute;top:0.5em;left:0;text-align:center;width:100%;z-index:2;}
 #site_header_logo_white img {height:90px;}
 #site_header_follow_white {
   position:absolute;top:2em;left:1em;
@@ -28,7 +27,7 @@ body {
   padding:0 1em;
 }
 
-#site_header_logo_black {position:absolute;top:0.5em;left:0;text-align:center;width:100%;}
+#site_header_logo_black {position:absolute;top:0.5em;left:0;text-align:center;width:100%;z-index:2;}
 #site_header_logo_black img {height:90px;}
 #site_header_follow_black {
   position:absolute;top:2em;left:1em;
@@ -478,8 +477,31 @@ a {
     color:#fff;
 }
 
-
-
+#about_page_background {
+    background: url("https://ladyfingers.beamtic.com/wordpress/wp-content/uploads/2018/06/about-1600.jpg");
+	background-size:cover;
+	width:100vw;
+	height:100vh;
+}
+#gavekort_fixed {
+	position:fixed;bottom:1em;right:1em;
+    text-decoration: none;
+    color: #000000;
+    border: #000000 solid 1px;
+    padding: 10px 30px;
+    z-index:300000;
+    display:block;
+    background: rgba(243,243,244, 0.5);
+}
+#gavekort_fixed:hover {
+    color: #ffffff;
+    background: #000000;
+    padding: 10px 40px;
+    transition: 0.5s;
+}
+#map {
+  height: 20em;;
+}
 
 
 
@@ -863,6 +885,10 @@ footer #copyright {
 
 @media screen and (max-width: 414px) {
   #site_header_follow_black_menu,#site_header_follow_black,#site_header_follow_white {left:-100vw;}
+  #site_header_logo_white img, #site_header_logo_black img {height:60px;}
+    #site_header_logo_black_menu img {
+      height:60px;
+    }
   #site_header video {
     position: relative;
     right: 20em;
@@ -1865,6 +1891,7 @@ q:after {
     width: 100px;
     height: 40px;
     line-height: 1px;
+    background:none;
 }
 
 #formGrid .button:hover {

@@ -3,24 +3,29 @@
 
  <head>
   <title></title>
-  <meta name="description" content="">
+  <meta charset="utf-8">
+  <meta name="description" content=""> <!-- Should be filled automatically from Wordpress Custom Field, but out of time -->
+  <meta name="robots" content="noindex, nofollow">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel='stylesheet' href='ladyfingers.css' type='text/css'>
-  <link rel='stylesheet' href='modified-insta-gallery.css' type='text/css'> <!-- Our own Modified CSS for the "Instagram Gallery" Wordpress Plugin -->
+  <link rel="stylesheet" href="ladyfingers.css" type="text/css">
+  <link rel="stylesheet" href="modified-insta-gallery.css" type="text/css"> <!-- Our own Modified CSS for the "Instagram Gallery" Wordpress Plugin -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700%7CRaleway:400,700" rel="stylesheet">
   <link rel="stylesheet" href="fontawesome-all.css">
   </head>
 
  <body>
- 
-    <!-- jQuery start -->
-    <script type='text/javascript' src='//ladyfingers.beamtic.com/wordpress/wp-includes/js/jquery/jquery.js?ver=1.12.4'></script>
-    <!-- jQuery end -->
+    <!-- Scripts Start -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDT6VTQBF-oFihc33fQ_4etU2XkE1uSPTc"></script>
+    
+    <!-- jQuery (Used by Instagram Gallery) -->
+    <script src="https://ladyfingers.beamtic.com/wordpress/wp-includes/js/jquery/jquery.js?ver=1.12.4"></script>
+    <!-- Scripts enD -->
   
   <div id="application_content">
   </div>
 
 <template id="template"> <!-- Default template -->
+  <a href="/?page=gavekort" id="gavekort_fixed">Gavekort</a>
   <header id="site_header">
    <div id="custom_header_content" data-siteHeader><!-- Corresponds with the "header_content" "Custom Field" in Wordpress -->
    <!-- The menuClosed class is replaced with menuOpen when the burger is clicked/touched -->
@@ -31,8 +36,9 @@
       <a href="https://www.facebook.com/ladyfingerscph/"><i class="fab fa-facebook-f"></i></a>
       <a href="https://www.facebook.com/ladyfingerscph/"><i class="fab fa-youtube"></i></a>
     </div>
+    <!-- NOTE CONTENT LIKE THIS SHOULD BE MOVED TO THE BACK-END (system category) - BUT WE ARE SHORT OF TIME -->
     <div id="site_header_logo_black_menu">
-     <img src="//ladyfingers.beamtic.com/wordpress/wp-content/uploads/2018/06/logo_black.png" alt="Ladyfingers black logo">
+     <img src="https://ladyfingers.beamtic.com/wordpress/wp-content/uploads/2018/06/logo_black.png" alt="Ladyfingers black logo">
     </div>
     <button id="burgerMenuButton"><span id="burgerBar1"></span><span id="burgerBar2"></span><span id="burgerBar3"></span></button>
    </nav>
@@ -43,21 +49,25 @@
   <footer id="site_footer" data-GlobalSiteFooter></footer>
 </template>
 
-<!-- tornado.js - fetches the content from the wordpress back end -->  
-<script type="text/javascript" src="tornado.js"></script>
+   <!-- tornado.js - fetches the content from the wordpress back end -->  
+   <script src="https://ladyfingers.beamtic.com/tornado.js"></script>
 
-<!-- Insta-gallery Wordpress plugin -->
-<script type="text/javascript">
-let insgalajax = {"ajax_url":"https://ladyfingers.beamtic.com/wordpress\/wp-admin\/admin-ajax.php"};
-</script>
+   <script>
+   </script>
+
+
+  <!-- Insta-gallery Wordpress plugin -->
+   <script>
+   let insgalajax = {"ajax_url":"https://ladyfingers.beamtic.com/wordpress\/wp-admin\/admin-ajax.php"};
+   </script>
   <!-- 
    The code in this file was moved to tornado.js so that we can load the plugin after loading content from Wordpress,
    hence why this is noW uncommented.
    <script type='text/javascript' src='/wordpress/wp-content/plugins/insta-gallery/assets/insta-gallery-min.js?ver=1.6.1'></script>
   -->
-<script type="text/javascript" src="//ladyfingers.beamtic.com/wordpress/wp-content/plugins/insta-gallery/assets/swiper/swiper.jquery.min.js"></script>
-<script type="text/javascript" src="//ladyfingers.beamtic.com/wordpress/wp-content/plugins/insta-gallery/assets/magnific-popup/jquery.magnific-popup.min.js"></script>
-<!-- Insta-gallery Wordpress plugin -->
+   <script src="https://ladyfingers.beamtic.com/wordpress/wp-content/plugins/insta-gallery/assets/swiper/swiper.jquery.min.js"></script>
+   <script src="https://ladyfingers.beamtic.com/wordpress/wp-content/plugins/insta-gallery/assets/magnific-popup/jquery.magnific-popup.min.js"></script>
+  <!-- Insta-gallery Wordpress plugin -->
 
   </body>
 
