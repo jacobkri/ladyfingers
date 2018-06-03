@@ -827,7 +827,7 @@ footer #copyright {
 }
 }
 
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 414px) {
   #site_header_follow_black_menu,#site_header_follow_black,#site_header_follow_white {left:-100vw;}
   #site_header video {
     position: relative;
@@ -876,6 +876,7 @@ footer #copyright {
     white-space: normal;
   }
 
+
     #unik_personlig .personlig_text {
     grid-column: 1;
     position: static;
@@ -885,6 +886,10 @@ footer #copyright {
     top: -20em;
     padding: 0 1em;
   }
+
+    #unik_personlig .personlig_text h2 {
+    white-space: normal;
+}
 
   #unik_personlig .personlig_image {
     grid-column: 1;
@@ -1158,7 +1163,7 @@ q:after {
     color: #000000;
 }
 
-@media only screen and (min-width: 401px) and (max-width: 1024px) {
+@media only screen and (min-width: 415px) and (max-width: 1024px) {
 
     #smykkefaellesskab {
     display: grid;
@@ -1438,7 +1443,7 @@ q:after {
 
 }
 
-@media only screen and (min-width: 401px) and (max-width: 768px){
+@media only screen and (min-width: 415px) and (max-width: 768px){
     #designerne {
         display: grid;
         grid-template-columns: 1fr 1fr;
@@ -1576,7 +1581,7 @@ q:after {
 
 /***** media query ******/
 
-@media screen and (min-width: 401px) {
+@media screen and (min-width: 415px) {
 
 #jager {
     padding: 4em 0;
@@ -1739,7 +1744,7 @@ q:after {
     width: 100%;
 }
 
-@media screen and (min-width: 401px) {
+@media screen and (min-width: 415px) {
     #inspiration {
         padding: 1em 10vw 1em 10vw;
         margin: 0 auto;
@@ -1979,7 +1984,7 @@ q:after {
     padding: 2em 0;
 }
 
-@media only screen and (min-width: 401px) {
+@media only screen and (min-width: 415px) {
     .designer_page, .brands, .folgMig, .designer_galleri {
         padding: 4em 5em;
     }
