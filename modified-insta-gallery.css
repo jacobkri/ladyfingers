@@ -31,6 +31,7 @@
  *      Jacob Kristensen (beamtic.com)
  */
 
+
 .ig-block {
     display: grid;
     grid-template-columns: repeat(12,1fr);
@@ -336,21 +337,34 @@
 }
 @media screen and (max-width: 767px) {
 
-	.ig-item{
-		min-width: 33.333%;
-		padding: 5px;
-	}
+
+
+    .instagallery-items {
+        grid-column: 1/13;
+    }
+
+
+
+
 
 }
+
 @media screen and (max-width: 480px) {
 
-	.ig-item{
-		min-width: 50%;
-	}
+
+    .ig-block {
+        display: grid;
+        grid-template-columns: 1fr !important;
+    }
 
     .instagallery-items {
         display: grid;
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr !important;
     }
+
+    .ig-item{
+		grid-column: 1 !important;
+	}
 }
+
 

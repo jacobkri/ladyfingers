@@ -8,6 +8,7 @@ body {
     margin: 0 auto;
     font-family: 'Open Sans', sans-serif;
     overflow-x:hidden;
+
 }
 
 
@@ -289,11 +290,13 @@ a {
 
 #unik_personlig {
     background: #fcfbf4;
+    overflow-x: hidden;
 }
 
 #unik_personlig img {
     width: 100%;
     height: auto;
+
 }
 
 #unik_personlig .wrapper {
@@ -301,6 +304,7 @@ a {
     grid-template-columns: repeat(12, 1fr);
     position: relative;
     top: 6em;
+
 }
 
 #unik_personlig .unik_image {
@@ -375,6 +379,7 @@ a {
 #gaden {
     background: #ffffff;
     padding: 11em 0px;
+    overflow-x: hidden;
 }
 
 #gaden .wrapper {
@@ -761,14 +766,14 @@ footer #copyright {
 
     #instagram_main .text {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      padding: 0 1em;
+      grid-template-columns: repeat(12,1fr);
+
 
     }
 
     #instagram_main .text_item {
-        grid-column: 1/2;
-      padding: 0 1em;
+        grid-column: 1/12;
+
 
     }
     
