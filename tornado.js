@@ -21,6 +21,7 @@ async function main() {
 	default_url = API_URL + 'posts?filter[name]=' + req_page;
   } else {
 	default_url = API_URL + 'posts?filter[name]=frontpage'; // If the "page" URL parameter was empty, show frontpage
+	req_page    = 'frontpage';
   }
   
   wp_page        = await loadJson(default_url); // Attempt to load the requested page
@@ -95,10 +96,12 @@ function create_burger_menu(navigation_array) {
     menu_list_top = '<ol id="menuList">';
     let menu_list = '';
     navigation_array.forEach(function(element) {
-      if (element['slug']=='frontpage') { // The frontpage link title must be "Forside"
+      if (req_page!==element['slug']) {
+        if (element['slug']=='frontpage') { // The frontpage link title must be "Forside"
         menu_list = '<li><a href="/" id="frontpage_link">Forsiden</a></li>' + menu_list;
-      } else {
-	    menu_list += '<li><a href=?page='+element['slug']+'>'+element['title']['rendered']+'</a></li>';
+        } else {
+	      menu_list += '<li><a href=?page='+element['slug']+'>'+element['title']['rendered']+'</a></li>';
+        }
       }
     });
     return menu_list_top + menu_list + '</ol>';
@@ -113,6 +116,7 @@ function toggle_burger_menu() {
 	
 	if (menu_state_open == true) {
 	  burger_menu.className = "menuClosed";
+	  toggleBurgerColor(); // When menu is closed, find out if we need to change burgerBar colors
 	  document.getElementById("burgerMenuButton").disabled = true; // disable button while animation runs
 	  
 	  setTimeout(function(){ // After the animation 
@@ -137,6 +141,8 @@ function toggle_burger_menu() {
 	  
 	} else {
 	  burger_menu.className = "menuOpen";
+	  toggleBurgerColor(); // When menu is opened, change burgerBar colors to black
+	  
 	  document.getElementById("burgerMenuButton").disabled = true; // disable button while animation runs
 	  // Depending on which page was requested, we need either a white or black logo in #site_header
 	  if(document.getElementById('site_header_logo_white')) {
@@ -164,15 +170,27 @@ function add_event_listeners() {
 }
 
 function scrollFunction() {
-  if (document.body.scrollTop > (window.screen.height-100) || document.documentElement.scrollTop > window.screen.height-100) {
-    document.getElementById('burgerBar1').style.background = "#000";
-    document.getElementById('burgerBar2').style.background = "#000";
-    document.getElementById('burgerBar3').style.background = "#000";
-  } else {
-    document.getElementById('burgerBar1').style.background = "#fff";
-    document.getElementById('burgerBar2').style.background = "#fff";
-    document.getElementById('burgerBar3').style.background = "#fff";
+  if (menu_state_open == false) {
+    if (document.body.scrollTop > (window.screen.height-100) || document.documentElement.scrollTop > window.screen.height-100) {
+      toggleBurgerColor('#000');
+    } else {
+      toggleBurgerColor('#fff');
+    }
   }
+}
+
+function toggleBurgerColor() {
+	
+	let chosenColor = '#000';
+	if ((document.getElementById('site_header_logo_white')) && (menu_state_open!==false)) {
+	  // Change burgerBar color to white if burgerMenu is open AND element ID "site_header_logo_white" exists
+	  chosenColor = '#fff';
+	} else {
+	  chosenColor = '#000'; // Else we change color of burgerBars to black
+	}
+	document.getElementById('burgerBar1').style.background = chosenColor;
+	document.getElementById('burgerBar2').style.background = chosenColor;
+	document.getElementById('burgerBar3').style.background = chosenColor;
 }
 
 
