@@ -423,9 +423,17 @@ a {
  *
  *  ****************************
  */
+#frontpage_heading.headingWrap {
+  z-index:2;
+  position: absolute;
+  top: 50%;
+  left: 5%;
+  transform: translate(-0%, -50%);
+  max-width: 600px;
+}
 #frontpage_heading.headingWrap h1 {
-    color:#fff;
-    padding:0;
+  color:#fff;
+  padding:0;
 }
 #designerne_heading.headingWrap h1 {
   text-align: center;
@@ -435,7 +443,7 @@ a {
 }
 #jaegersborggade_heading.headingWrap h1 {
   position: relative;
-  top:2em;left:2em;
+  top:4.5em;left:2em;
   color: #000;
   z-index: 2;
 }
