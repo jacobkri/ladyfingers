@@ -10,6 +10,7 @@ body {
     overflow-x:hidden;
 }
 
+
 /*************************** header ***************************/
 #site_header_logo_white {position:absolute;top:0.5em;left:0;text-align:center;width:100%;}
 #site_header_logo_white img {height:90px;}
@@ -65,6 +66,21 @@ body {
   max-height:100vh;
   overflow:hidden;
     position: relative;
+}
+
+#site_header .headingWrap {
+    z-index:2;
+    position: absolute;
+    top: 50%;
+    left: 5%;
+    transform: translate(-0%, -50%);
+    max-width: 600px;
+}
+
+#site_header .headingWrap h1 {
+
+    color:#fff;
+    padding:0;
 }
 
 
@@ -433,7 +449,7 @@ a {
 }
 #burgerMenu button:hover {color:#000000;cursor:pointer;}
 #burgerMenu ol {list-style-type:none;width:100%;clear:both;margin:8em 0;}
-#burgerMenu li + li {margin: 1.2em 0;}
+#burgerMenu li + li {margin: 1.5em 0;}
 #burgerMenu a {
   display:block;
   text-align:center;
@@ -443,7 +459,6 @@ a {
   padding:0.1em 0;
   width:100%;
 }
-
 #burgerMenu a:hover {color:#799997;}
 #burgerMenu span {
 	display:block;

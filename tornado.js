@@ -73,7 +73,6 @@ async function showContent() {
   let clone = template.cloneNode(true).content;
   clone.querySelector("[data-siteHeader").innerHTML        = wp_page[0]['acf']['header_content'];
   document.querySelector('title').innerHTML                = wp_page[0]['title']['rendered']; // Most likely, this will not work in search engines
-  clone.querySelector("[data-headerH1]").innerHTML         = wp_page[0]['title']['rendered'];
   clone.querySelector("[data-content]").innerHTML          = wp_page[0]['content']['rendered'];
   clone.querySelector("[data-burgerMenu]").innerHTML       += create_burger_menu(wp_navigation);
   clone.querySelector("[data-GlobalSiteFooter]").innerHTML = footer_content;
