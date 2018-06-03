@@ -11,7 +11,8 @@ let global_site_footer_url = API_URL + 'posts?filter[name]=footer';
 let not_found_url          = API_URL + 'posts?filter[name]=404-not-found'; // Custom "Not Found" page from wordpress
 let navigation_url         = API_URL + 'posts?filter[category_name]=navigation'; // Fetch all posts in the navigation category
 
-main(); // Run the show :-D
+document.addEventListener("DOMContentLoaded", main);
+// main(); // Run the show :-D
 
 async function main() {
   // Function to load required data from Wordpress back-end
@@ -96,12 +97,20 @@ function create_burger_menu(navigation_array) {
     menu_list_top = '<ol id="menuList">';
     let menu_list = '';
     navigation_array.forEach(function(element) {
-      if (req_page!==element['slug']) {
-        if (element['slug']=='frontpage') { // The frontpage link title must be "Forside"
-        menu_list = '<li><a href="/" id="frontpage_link">Forsiden</a></li>' + menu_list;
-        } else {
-	      menu_list += '<li><a href=?page='+element['slug']+'>'+element['title']['rendered']+'</a></li>';
-        }
+      let link_title; // Used to easily set the title, and avoid more nested if/else statements
+      let link_src; // Same as above :-D
+      if (element['slug']=='frontpage') { // If the curent item in the array is the frontpage
+          link_title = 'Forsiden'; // Different title on frontpage link - better for UX?
+          link_src = '/'; // There is no need to link to ?page=frontpage, and doing so might lead to duplicate content in SE
+      } else { // If not the frontpage
+        link_title = element['title']['rendered']; // Title same as title in Wordpress 
+        link_src   = '/?page=' + element['slug']; // Link to URL parameter
+      }
+      
+      if (req_page!==element['slug']) { // If the requested page does NOT match the current item in the array, show normal menu link
+	      menu_list += '<li><a href='+link_src+'>'+link_title+'</a></li>';
+      } else { // If the requested page DOES match... apply "current_page" styles
+    	  menu_list += '<li><a href='+link_src+' class="current_page">'+link_title+'</a></li>';
       }
     });
     return menu_list_top + menu_list + '</ol>';
