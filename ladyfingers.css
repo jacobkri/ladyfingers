@@ -10,7 +10,6 @@ body {
     overflow-x:hidden;
 
 }
-
 /*************************** header ***************************/
 #site_header_logo_white {position:absolute;top:0.5em;left:0;text-align:center;width:100%;z-index:2;}
 #site_header_logo_white img {height:90px;}
@@ -606,7 +605,9 @@ a {
   50% {width:100%;height:4em;border-bottom-left-radius:100%;}
   100% {width:100%;height:100vh;background:rgba(243,243,244, 0.8);border-bottom-left-radius:0;}
 }
-
+.current_page { /* Color for current page in burgerMenu */
+	color:#799997 !important;
+}
 
 /*********************************
  *

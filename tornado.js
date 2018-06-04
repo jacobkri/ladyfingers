@@ -98,7 +98,7 @@ async function showContent() {
 
 function create_burger_menu(navigation_array) {
   if (navigation_array !== false) {
-    menu_list_top = '<ol id="menuList">';
+    let menu_list_top = '<ol id="menuList">';
     let menu_list = '';
     navigation_array.forEach(function(element) {
       let link_title; // Used to easily set the title, and avoid more nested if/else statements
