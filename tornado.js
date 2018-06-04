@@ -83,7 +83,10 @@ async function showContent() {
 
   load_instagram_plugin(); // Runs the Instagram Gallery Wordpress Plugin
   add_event_listeners(); // Add <button> Event Listeners after loading content
-  initMap();
+  
+  if (document.querySelector("#map")) { // Only include Google Map if #map id exists in page
+    initMap();
+  }
   
   //The below code calls "scrollFunction()" to change the color of the burgerMenu when needed
   //Because of design-requirements, this is only needed on some pages. I.e. Some pages has a white #site_header and others has a video or an image.
@@ -132,7 +135,7 @@ function toggle_burger_menu() {
 	  setTimeout(function(){ // After the animation 
 	    burger_menu.className = "";
 	    // document.querySelector("body").style.overflowY = "auto"; // Shows the scrollbar when menu is closed
-	    document.querySelector("burgerMenuButton").disabled = false; // enable button when animation is done
+	    document.querySelector("#burgerMenuButton").disabled = false; // enable button when animation is done
 	  }, 1000);
 	  
 	  menu_state_open = false;

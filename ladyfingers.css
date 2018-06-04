@@ -502,7 +502,12 @@ a {
 #map {
   height: 20em;;
 }
-
+  .designer_heading {
+    position: absolute;
+    top:5em;left:8em;
+    font-size:3em;
+    background:none;
+  }
 
 
 /*********************************
@@ -661,7 +666,10 @@ footer #copyright {
 }
 
 @media screen and (max-width: 1024px) {
-
+  .designer_heading {
+    top:4.5em;left:5em;
+    font-size:2.5em;
+  }
     #site_header video {
       z-index:1;
       width: auto;
@@ -711,7 +719,10 @@ footer #copyright {
 }
 
 @media screen and (max-width: 768px) {
-
+  .designer_heading {
+    top:4em;left:20%;
+    font-size:2em;
+  }
     #ladyfingers_forside .wrapper {
      grid-template-columns: 1fr;
     }
