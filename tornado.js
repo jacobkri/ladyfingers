@@ -3,6 +3,7 @@
 let API_URL         = 'https://ladyfingers.beamtic.com/wordpress/wp-json/wp/v2/';
 let req_page        = GetURLParameter('page'); // The post to fetch from Wordpress
 let wp_page         = false; // Contains the single-view page content I.e. frontpage and about
+let wp_navigation   = false;
 let wp_site_footer  = false; // Contains the global footer
 let menu_state_open = false;
 // https://ladyfingers.beamtic.com/wordpress/wp-json/wp/v2/posts?filter[category_name]=navigation
@@ -186,8 +187,6 @@ function scrollFunction() {
   if (menu_state_open == false) {
     if (document.body.scrollTop > (window.screen.height-100) || document.documentElement.scrollTop > window.screen.height-100) {
       toggleBurgerColor('#000');
-    } else {
-      toggleBurgerColor('#fff');
     }
   }
 }
