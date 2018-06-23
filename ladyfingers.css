@@ -895,6 +895,9 @@ footer #copyright {
 }
 
 @media screen and (max-width: 414px) {
+#burgerMenu ol {margin:5em 0;}
+#burgerMenu li + li {margin: 1em 0;}
+#gavekort_fixed {display:none;}
   #site_header_follow_black_menu,#site_header_follow_black,#site_header_follow_white {left:-100vw;}
   #site_header_logo_white img, #site_header_logo_black img {height:60px;}
     #site_header_logo_black_menu img {
